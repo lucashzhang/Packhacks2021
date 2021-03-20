@@ -21,6 +21,9 @@ function getChatList() {
 function createTutorCard(name) {
     const anchor = $("#chat-list")
     anchor.append(`
-        <div>${name}</div>
+        <div class="chat-list-card">
+        <div class="chat-list-profile" style="background-color: hsl(350, 100%, 50%)">${name.charAt(0).toUpperCase()}</div>
+        ${name}
+        </div>
     `)
 }
