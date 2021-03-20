@@ -1,0 +1,64 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hey",
+        "How are you",
+        "Hello"
+      ]
+    },
+    {
+      "tag": "greeting-info",
+      "patterns": [
+        "Good day",
+        "Good Morning"
+      ]
+    },
+    {
+      "tag": "is-awake",
+      "patterns": [
+        "anyone there",
+        "are you there",
+        "wake up",
+        "you up"
+      ]
+    },
+    {
+      "tag": "weather-general-forecast",
+      "patterns": [
+        "whats the weather like today",
+        "whats the weather looking like",
+        "whats the weather",
+        "weather"
+      ]
+    },
+    {
+      "tag": "weather-temperature",
+      "patterns": [
+        "whats the temperature like today",
+        "whats the temperature looking like",
+        "whats the temperature",
+        "temperature"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye",
+        "See you later",
+        "Goodbye"
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Thanks",
+        "Thank you",
+        "That's helpful",
+        "Thank's a lot!"
+      ]
+    }
+  ]
+}
