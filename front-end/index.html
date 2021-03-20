@@ -5,54 +5,51 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="index.css">
     <title>Packhacks 2021</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">Packhacks 2021</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                    </li>
-                </ul>
-                <a class="btn btn-outline-success" href="login.html">Login</a>
-            </div>
-        </div>
-    </nav>
+    <div>
+            <div class="row"> 
 
+                <div class="videoContainer hide-for-small-only">
+                    <div class="overlay"></div>
+                      <video autoplay loop muted>
+                        <source src="video1.mp4" type="video/mp4">
+        
+                    </video>
+                </div>
+
+
+                <div>
+                    
+                    <video autoplay muted loop id="myVideo" width="100%">
+                        <source src="landingvid.mp4" type="video/mp4">
+                    </video>
+                    <div style="height: 99%; width: 100%; position: relative; top: -100%; left: 0%; z-index: 1; background-image:linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)); opacity: 0.5;"></div>
+                </div >
+                
+            
+                <h1 class="text-center" style="font-family: Verdana, Geneva, Tahoma, sans-serif; z-index: 10; position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%); color:white">Service XX</h1>
+                <hr style="color:white">
+                <div>
+
+                    <button class="hover1">Log In</button>
+                    <button class="hover2">Sign Up</button>
+                    
+                </div>
+                
+            </div>
+        
+    </div>
+    
+
+    
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
