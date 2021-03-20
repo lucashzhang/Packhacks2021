@@ -22,8 +22,8 @@ const httpsServer = https.createServer({
 }, app);
 
 httpsServer.listen(port, () => {
-	utils.print("Done.");
-	utils.print(`Server active at https://localhost:${port}`);
+	console.log("Done.");
+	console.log(`Server active at https://localhost:${port}`);
 });
 
 app.get('/', (req, res) => {
