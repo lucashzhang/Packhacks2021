@@ -9,16 +9,27 @@
         "Hello"
 	  ],
 	  "responses": [
-		  ""
+      "Hi! How may I help you today?",
+      "Hello! How may I help you today?"
 	  ]
     },
+
     {
       "tag": "math",
       "patterns": [
-		  ""
+        "Math",
+        "Equation",
+        "Solve",
+        "Minus",
+        "Plus", 
+        "Fraction",
+        "Derivative",
+        "Integral"
+
+      
       ],
 	  "responses": [
-		  "url:http://api.wolframalpha.com/v2/query?appid=6APH22-4T64A44K97&input=solve+"
+      "url:http://api.wolframalpha.com/v2/query?appid=6APH22-4T64A44K97&input=solve+"
 	  ]
     },
     {
@@ -29,7 +40,9 @@
         "Goodbye"
       ],
 	  "responses": [
-		  ""
+      "See ya!",
+      "Have a nice day!",
+      "Hope I could help!"
 	  ]
     },
     {
@@ -41,7 +54,8 @@
         "Thank's a lot!"
       ],
 	  "responses": [
-		  ""
+      "No problem!",
+      "My pleasure!"
 	  ]
     }
   ]
