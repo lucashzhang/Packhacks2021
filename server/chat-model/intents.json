@@ -7,14 +7,20 @@
         "Hey",
         "How are you",
         "Hello"
-      ]
+	  ],
+	  "responses": [
+		  ""
+	  ]
     },
     {
       "tag": "greeting-info",
       "patterns": [
         "Good day",
         "Good Morning"
-      ]
+      ],
+	  "responses": [
+		  ""
+	  ]
     },
     {
       "tag": "goodbye",
@@ -22,7 +28,10 @@
         "Bye",
         "See you later",
         "Goodbye"
-      ]
+      ],
+	  "responses": [
+		  ""
+	  ]
     },
     {
       "tag": "thanks",
@@ -31,7 +40,10 @@
         "Thank you",
         "That's helpful",
         "Thank's a lot!"
-      ]
+      ],
+	  "responses": [
+		  ""
+	  ]
     }
   ]
 }
