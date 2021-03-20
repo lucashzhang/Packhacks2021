@@ -2,12 +2,13 @@ const express = require('express');
 const fs = require('fs');
 const https = require('https');
 const bodyParser = require('body-parser');
+const utils = require('./utils');
 
 let intents_data = JSON.parse(fs.readFileSync('./chat-model/intents.json'));
-let self_tags = [];
+let model_responses = {};
 
 for (let i=0;i<intents_data.intents.length;i++) {
-	self_tags.push(intents_data.intents[i].tag);
+	self_tags[intents_data.intents[i].tag] = intents_data.intents[i].responses;
 }
 
 const app = express();
@@ -28,6 +29,18 @@ httpsServer.listen(port, () => {
 
 app.get('/', (req, res) => {
 	let command = req.query.cmd;
+	let action = await utils.getProcess('python', ['./chat-model/parse.py', command]);
 
-	console.log(command);
+	responses = model_responses[action];
+
+	const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+	let finalResponse = randomResponse;
+
+	if (randomResponse.includes("api")) {
+		api = randomResponse.split(":")[1];
+
+		finalResponse = await utils.getRequest(api);
+	}
+
+	res.send(`${finalResponse}`);
 });
