@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 */
 
 const appTest = express()
-const portTest = 3002
+const portTest = 3000
 
 appTest.get('/', (req, res) => {
   res.send('Hello World!')
