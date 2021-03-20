@@ -31,6 +31,7 @@ function createUser(email, password) {
 				db.collection("users").doc(auth.currentUser.uid).set({
 					uid: auth.currentUser.uid,
 					email: email,
+					tutor: signupForm['tutor'].value,
 					profilePic: 'default.png',
 					tags: [],
 					chats: [chatId],

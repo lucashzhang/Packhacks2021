@@ -1,7 +1,6 @@
 .DS_Store
 __pycache__/
 /server/node_modules/
-*.pth
 .*
 !.gitignore
 .*/

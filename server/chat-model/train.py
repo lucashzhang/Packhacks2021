@@ -58,11 +58,11 @@ if __name__ == '__main__':
     X_train = np.array(X_train)
     Y_train = np.array(Y_train)
 
-    batch_size = 8
-    hidden_size = 8
+    batch_size = 10
+    hidden_size = 20
     output_size = len(tags)
     input_size = len(X_train[0])
-    learning_rate = 0.001
+    learning_rate = 0.00025
     num_epochs = 1000
 
     dataset = ChatDataset()
@@ -75,7 +75,7 @@ if __name__ == '__main__':
     model = NeuralNet(input_size, hidden_size, output_size).to(device)
 
     criterion = nn.CrossEntropyLoss()
-    optimizer = torch.optim.Adam(model.parameters(), learning_rate)
+    optimizer = torch.optim.Adam(model.parameters(), learning_rate, weight_decay=.005)
 
     print("Starting training")
     for epoch in range(num_epochs):
