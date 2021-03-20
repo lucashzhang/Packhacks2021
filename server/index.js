@@ -29,5 +29,5 @@ httpsServer.listen(port, () => {
 app.get('/', (req, res) => {
 	let command = req.query.cmd;
 
-	console.log(command);
+	res.send(`You sent ${command}`);
 });
