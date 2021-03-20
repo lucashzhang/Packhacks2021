@@ -1,5 +1,5 @@
 const express = require('express');
-const fs = require('fs');
+/*const fs = require('fs');
 const https = require('https');
 const bodyParser = require('body-parser');
 
@@ -29,7 +29,7 @@ httpsServer.listen(port, () => {
 app.get('/', (req, res) => {
 	res.send("Hello World");
 });
-
+*/
 
 const appTest = express()
 const portTest = 3002
