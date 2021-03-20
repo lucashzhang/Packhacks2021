@@ -29,3 +29,15 @@ httpsServer.listen(port, () => {
 app.get('/', (req, res) => {
 	res.send("Hello World");
 });
+
+
+const appTest = express()
+const portTest = 3002
+
+appTest.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+appTest.listen(portTest, () => {
+  console.log(`Example app listening at http://localhost:${portTest}`)
+})
