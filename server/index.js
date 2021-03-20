@@ -2,7 +2,32 @@ const express = require('express');
 const fs = require('fs');
 const https = require('https');
 const bodyParser = require('body-parser');
+const multer = require("multer");
+const mkdirp = require("mkdirp");
 const utils = require('./utils');
+
+mkdirp('./ocr-convert-image-to-text/inputs', function(err) {
+	if (err) console.log("Cant make dir");
+	else console.log("made dir");
+});
+
+mkdirp('./ocr-convert-image-to-text/outputs', function(err) {
+	if (err) console.log("Cant make dir");
+	else console.log("made dir");
+});
+
+var Storage = multer.diskStorage({
+	destination: function(req, file, callback) {
+		callback(null, "./ocr-convert-image-to-text/inputs");
+	},
+	filename: function(req, file, callback) {
+		callback(null, file.originalname);
+	}
+});
+
+var upload = multer({
+	storage: Storage
+}).array("image", 10);
 
 let intents_data = JSON.parse(fs.readFileSync('./chat-model/intents.json'));
 let model_responses = {};
@@ -43,4 +68,13 @@ app.get('/', (req, res) => {
 	}
 
 	res.send(`${finalResponse}`);
+});
+
+app.post('/parse_img', (req, res) => {
+	upload(req, res, function(err) {
+        if (err) {
+            return res.end("Something went wrong!");
+        }
+        return res.end("File uploaded sucessfully!.");
+    });
 });
