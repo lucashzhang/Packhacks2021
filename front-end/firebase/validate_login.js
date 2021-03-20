@@ -1,8 +1,6 @@
 auth.onAuthStateChanged((user) => {
 	if (!user) {
 		document.location.replace("/login.html");
-	} else if (!user.emailVerified) {
-		logOut();
 	} else if (document.location === "signup.html" || document.location === "login.html") {
 		document.location.replace("/")
 	}
