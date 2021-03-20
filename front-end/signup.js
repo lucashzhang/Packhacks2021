@@ -1,5 +1,5 @@
 function drawCheck() {
-	$(".email-verification-notification").css({"transform" : "translateX(-50%) translateY(0px)", "opacity" : "1", "display" : "block"});
+	$(".email-verification-notification").css({"transform" : "translateY(-50%)", "opacity" : "1", "display" : "block"});
 	$(".signup-container").css("opacity", 0);
 
 	var start = 100;
