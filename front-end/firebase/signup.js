@@ -34,7 +34,10 @@ function createUser(email, password) {
 					tutor: signupForm['tutor'].value,
 					profilePic: 'default.png',
 					tags: [],
-					chats: [chatId],
+					chats: [{
+						user: 'bot',
+						chatId
+					}],
 					friends: []
 				}).then(() => {
 					auth.signOut().then(() => {
