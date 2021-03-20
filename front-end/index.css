@@ -1,0 +1,39 @@
+.hover1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    transition-duration: .4s;
+    padding: 10px 32px; 
+    border-radius:5px; 
+    font-size: 13px; 
+    border: none; 
+    z-index: 10; 
+    position: absolute;
+    top: 55%;
+    left: 46%;
+    transform: translate(-50%, -50%); 
+    min-width:100px
+}
+.hover1:hover{
+    background-color: black;
+    color: white;
+}
+
+.hover2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    transition-duration: .4s;
+    padding: 10px 32px; 
+    border-radius:5px; 
+    color: white; 
+    background-color: #f44336; 
+    font-size: 13px;
+    border: none; 
+    z-index: 10; 
+    position: absolute;
+    top: 55%;
+    left: 54%;
+    transform: translate(-50%, -50%); 
+    min-width:100px
+}
+.hover2:hover{
+    background-color: rgb(33, 114, 235); /* Green */
+    color: black;
+}
