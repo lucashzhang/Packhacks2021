@@ -1,16 +1,22 @@
 .hover1 {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: sans-serif;
     transition-duration: .4s;
-    padding: 10px 32px; 
+    padding: 10px 50px; 
     border-radius:5px; 
-    font-size: 13px; 
+    color: black; 
+    background-color: white; 
+    font-size: 20px; 
     border: none; 
     z-index: 10; 
     position: absolute;
     top: 55%;
     left: 46%;
     transform: translate(-50%, -50%); 
-    min-width:100px
+    min-width:150px;
+    min-height:50px;
+    text-decoration: none;
+    text-align: center;
+    
 }
 .hover1:hover{
     background-color: black;
@@ -18,22 +24,25 @@
 }
 
 .hover2 {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: sans-serif;
     transition-duration: .4s;
-    padding: 10px 32px; 
+    padding: 10px 50px; 
     border-radius:5px; 
     color: white; 
     background-color: #f44336; 
-    font-size: 13px;
+    font-size: 20px;
     border: none; 
     z-index: 10; 
     position: absolute;
     top: 55%;
     left: 54%;
     transform: translate(-50%, -50%); 
-    min-width:100px
+    min-width:150px;
+    min-height:50px;
+    text-decoration: none;
+    text-align: center;
 }
 .hover2:hover{
-    background-color: rgb(33, 114, 235); /* Green */
+    background-color: rgb(255, 179, 179); /* Green */
     color: black;
 }

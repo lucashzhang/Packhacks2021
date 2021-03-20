@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+    <link href="global.css" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
@@ -13,8 +13,14 @@
     <title>Packhacks 2021</title>
 </head>
 
-<body>
-    <div>
+<body > 
+    <div class="header">
+		<div class="header-container">
+			<a href="https://aszala.com" class="icon vertical-center"><img class="logo" src="https://aszala.com/logo.png" alt="A/Z Logo"></a>
+			<a href="login.html" class="button vertical-center">Login</a>
+		</div>
+	</div>
+    <div style="position:relative; top: -15%; left: 0%;">
             <div class="row"> 
 
                 <div class="videoContainer hide-for-small-only">
@@ -31,16 +37,15 @@
                     <video autoplay muted loop id="myVideo" width="100%">
                         <source src="landingvid.mp4" type="video/mp4">
                     </video>
-                    <div style="height: 99%; width: 100%; position: relative; top: -100%; left: 0%; z-index: 1; background-image:linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)); opacity: 0.5;"></div>
+                    <div style="height: 99%; width: auto; position: relative; top: -100%; left: 0%; z-index: 1; background-image:linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)); opacity: 0.5;"></div>
                 </div >
                 
             
-                <h1 class="text-center" style="font-family: Verdana, Geneva, Tahoma, sans-serif; z-index: 10; position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%); color:white">Service XX</h1>
-                <hr style="color:white">
+                <h1 class="text-center" style="font-size: 100px; font-family: sans-serif; z-index: 10; position: absolute;top: 47%;left: 50%;transform: translate(-50%, -50%); color:white">ALPHA•STACK</h1>
                 <div>
 
-                    <button class="hover1">Log In</button>
-                    <button class="hover2">Sign Up</button>
+                    <a class="hover1" href="login.html">Login</a>
+                    <a class="hover2" href="signup.html">Signup</a>
                     
                 </div>
                 
