@@ -39,7 +39,7 @@ app.get('/', (req, res) => {
 	if (randomResponse.includes("api")) {
 		api = randomResponse.split(":")[1];
 
-		finalResponse = await utils.getRequest(api);
+		finalResponse = await utils.getRequest(api + command);
 	}
 
 	res.send(`${finalResponse}`);
