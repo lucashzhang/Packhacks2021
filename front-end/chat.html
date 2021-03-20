@@ -11,11 +11,30 @@
     <title>Packhacks 2021</title>
     <link href="global.css" rel="stylesheet">
     <link href="chat.css" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 
 <body>
-    <div id="chat-list"></div>
+    <div class="header">
+        <div class="header-container">
+            <a href="https://aszala.com" class="icon vertical-center"><img class="logo"
+                    src="https://aszala.com/logo.png" alt="A/Z Logo"></a>
+            <a href="login.html" class="button vertical-center">Login</a>
+        </div>
+    </div>
+    <div class="chat-container">
+        <div id="chat-list"></div>
+        <div class="chat-main">
+        </div>
+        <div class="chat-input">
+            <form>
+                <input class="textfield" placeholder="Your Input" />
+                <label class="upload" value="Upload Photo">Upload Photo<input type="file"></input></label>
+                <input class="chat-submit" type="submit" value="Send"></input>
+            </form>
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

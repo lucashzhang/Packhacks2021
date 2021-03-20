@@ -7,7 +7,7 @@ function getChatList() {
             const chats = doc.data().chats;
             const anchor = $("#tutor-list")
             anchor.html("");
-            createTutorCard('bot')
+            createTutorCard('bot');
             for (let chat of chats) {
                 const ids = chat.chatId.split("<=>")
                 if (`${ids[0]}` !== 'bot' && `${ids[1]}` !== 'bot') {
