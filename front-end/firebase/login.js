@@ -41,7 +41,7 @@ auth.onAuthStateChanged((user) => {
 				$("#login-error").css("display", "block");
 				$("#login-error").html("Your email has not been verified. Please click <span onclick='sendEmail();' style='text-decoration:underline;cursor:pointer;'>here</span> if you would like another verification email.");
 			} else {
-				document.location.replace('MainPage/main.html');
+				document.location.replace('/');
 			}
 		}
     }

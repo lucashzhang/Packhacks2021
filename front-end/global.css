@@ -1,0 +1,80 @@
+:root {
+	--primary-red: #a80000;
+}
+
+body {
+	color: var(--primary-red);
+	font-family: 'Arimo', sans-serif;
+}
+
+html,body {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.header {
+	width: 100%;
+	height: 75px;
+	z-index: 99999;
+	background: var(--primary-red);
+	position: relative;
+}
+
+.button {
+	border-radius:11px;
+	border:1px solid white;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+	background: var(--primary-red);
+}
+
+.vertical-center {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.header-container>.button {
+	right: 50px;
+}
+
+
+.header-container>.icon {
+	left: 50px;
+}
+
+.container {
+	width: 100%;
+	margin: 0;
+	text-align: center;
+}
+
+.textfield {
+    width: 20%;
+    height: 30px;
+    border-radius: 50px;
+    background: rgba(100, 100, 100, 0.10);
+    border: solid 2px transparent;
+    color: black;
+    padding: 10px;
+    font-size: 15px;
+}
+
+.textfield:focus {
+    outline:none !important;
+}
+
+.uppercase {
+	text-decoration: uppercase;
+}
+
+.title {
+	font-size: 30px;
+}

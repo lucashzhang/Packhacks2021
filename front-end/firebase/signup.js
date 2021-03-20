@@ -15,6 +15,10 @@ signupForm.addEventListener('submit', (e) => {
 	}
 });
 
+function createChatId(uid1, uid2) {
+	return uid1 > uid2 ? `${uid1}<=>${uid2}` : `${uid1}<=>${uid2}`;
+}
+
 function createUser(email, password) {
 	if (auth.currentUser != null) {
 		auth.signOut().then(() => {
@@ -23,12 +27,17 @@ function createUser(email, password) {
 	} else {
 		auth.createUserWithEmailAndPassword(email, password).then((cred) => {
 			auth.currentUser.sendEmailVerification().then(() => {
+				const chatId = createChatId(auth.currentUser.uid, "bot");
 				db.collection("users").doc(auth.currentUser.uid).set({
 					uid: auth.currentUser.uid,
 					email: email,
 					tutor: signupForm['tutor'].value,
 					profilePic: 'default.png',
 					tags: [],
+					chats: [{
+						user: 'bot',
+						chatId
+					}],
 					friends: []
 				}).then(() => {
 					auth.signOut().then(() => {
@@ -36,6 +45,9 @@ function createUser(email, password) {
 						drawCheck();
 					});
 				});
+				db.collection("chats").doc(chatId).set({
+					messages: []
+				})
 			});
 
 		}).catch(err => {
