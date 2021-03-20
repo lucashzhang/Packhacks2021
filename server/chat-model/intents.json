@@ -13,13 +13,12 @@
 	  ]
     },
     {
-      "tag": "greeting-info",
+      "tag": "math",
       "patterns": [
-        "Good day",
-        "Good Morning"
+		  ""
       ],
 	  "responses": [
-		  ""
+		  "url:http://api.wolframalpha.com/v2/query?appid=6APH22-4T64A44K97&input=solve+"
 	  ]
     },
     {
