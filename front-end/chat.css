@@ -17,6 +17,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-right: solid 1px rgb(177, 176, 176)
 }
 
 .chat-list-card {
@@ -27,11 +28,6 @@ body {
     border-radius: 0.5rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
-}
-
-.chat-list-card:hover {
-    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-    cursor: pointer;
 }
 
 .chat-list-profile {
@@ -57,12 +53,15 @@ body {
 }
 
 .chat-input {
+    border-top: solid 1px rgb(177, 176, 176);
     grid-row: 2;
     grid-column: 2;
+    padding-top: 1rem;
 }
 
 .textfield {
-    width: calc(100% - 300px)
+    width: calc(100% - 300px);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 }
 
 .upload {
@@ -78,7 +77,7 @@ body {
     position: relative;
     text-align: center;
     line-height: 200%;
-    cursor: pointer;
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 }
 
 .upload input[type="file"] {
@@ -95,5 +94,14 @@ body {
     font-size: 15px;
     color: white;
     background-color: var(--primary-red);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+}
+
+.chat-list-card:hover, .upload:hover, .chat-submit:hover {
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     cursor: pointer;
+}
+
+.textfield:hover {
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
