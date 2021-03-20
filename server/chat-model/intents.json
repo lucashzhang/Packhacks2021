@@ -14,6 +14,59 @@
 	  ]
     },
 
+  
+
+    {
+      "tag": "chemistry",
+      "patterns": [ 
+        "Chemistry",
+        "Molecule",
+        "moles",
+        "Gas",
+        "Liquid",
+        "Solid",
+        "Atom",
+        "Reactions"
+        
+	  ],
+	  "responses": [
+      "redirect:chemistry"
+    
+	  ]
+    },
+
+    {
+      "tag": "biology",
+      "patterns": [
+        "Biology",
+        "DNA",
+        "Genetics",
+        "Genes",
+        "Organism",
+        "Body",
+        "Hormones"
+
+	  ],
+	  "responses": [
+      "redirect:biology"
+	  ]
+    },
+    {
+      "tag": "physics",
+      "patterns": [
+        "Force",
+        "Physics",
+        "Gravity",
+        "Velocity",
+        "Acceleration",
+        "Mass",
+        "Relativity"
+	  ],
+	  "responses": [
+      "redirect:chemistry"
+	  ]
+    },
+
     {
       "tag": "math",
       "patterns": [
