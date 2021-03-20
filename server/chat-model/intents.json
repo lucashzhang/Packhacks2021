@@ -7,41 +7,19 @@
         "Hey",
         "How are you",
         "Hello"
-      ]
+	  ],
+	  "responses": [
+		  ""
+	  ]
     },
     {
-      "tag": "greeting-info",
+      "tag": "math",
       "patterns": [
-        "Good day",
-        "Good Morning"
-      ]
-    },
-    {
-      "tag": "is-awake",
-      "patterns": [
-        "anyone there",
-        "are you there",
-        "wake up",
-        "you up"
-      ]
-    },
-    {
-      "tag": "weather-general-forecast",
-      "patterns": [
-        "whats the weather like today",
-        "whats the weather looking like",
-        "whats the weather",
-        "weather"
-      ]
-    },
-    {
-      "tag": "weather-temperature",
-      "patterns": [
-        "whats the temperature like today",
-        "whats the temperature looking like",
-        "whats the temperature",
-        "temperature"
-      ]
+		  ""
+      ],
+	  "responses": [
+		  "url:http://api.wolframalpha.com/v2/query?appid=6APH22-4T64A44K97&input=solve+"
+	  ]
     },
     {
       "tag": "goodbye",
@@ -49,7 +27,10 @@
         "Bye",
         "See you later",
         "Goodbye"
-      ]
+      ],
+	  "responses": [
+		  ""
+	  ]
     },
     {
       "tag": "thanks",
@@ -58,7 +39,10 @@
         "Thank you",
         "That's helpful",
         "Thank's a lot!"
-      ]
+      ],
+	  "responses": [
+		  ""
+	  ]
     }
   ]
 }
