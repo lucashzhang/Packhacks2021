@@ -27,7 +27,7 @@ function createUser(email, password) {
 	} else {
 		auth.createUserWithEmailAndPassword(email, password).then((cred) => {
 			auth.currentUser.sendEmailVerification().then(() => {
-				const chatId = createChatId(auth.currentUser.uid, "bot");
+				const chatId = createChatId(auth.currentUser.uid, "SpudTheB0t");
 				db.collection("users").doc(auth.currentUser.uid).set({
 					uid: auth.currentUser.uid,
 					email: email,
@@ -35,7 +35,7 @@ function createUser(email, password) {
 					profilePic: 'default.png',
 					tags: [],
 					chats: [{
-						user: 'bot',
+						user: 'Spud The Bot',
 						chatId
 					}],
 					friends: []
