@@ -2,7 +2,7 @@ getChatList()
 
 function getChatList() {
     auth.onAuthStateChanged((user) => {
-        const uid = user.uid;
+        const uid = auth.currentUser.uid;
         db.collection("users").doc(uid).onSnapshot(doc => {
             const chats = doc.data().chats;
             const anchor = $("#tutor-list")
@@ -10,7 +10,7 @@ function getChatList() {
             createTutorCard('Spud The Bot', 'SpudTheB0t');
             for (let chat of chats) {
                 const ids = chat.chatId.split("<=>");
-                const id = ids[0].trim() === `${uid}` ? `${id[1]}` : `${ids[0]}`;
+                const id = ids[0].trim() === `${uid}` ? `${ids[1]}` : `${ids[0]}`;
                 if (id !== 'SpudTheB0t') {
                     createTutorCard(chat.user, id)
                 }
