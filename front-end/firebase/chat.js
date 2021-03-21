@@ -1,5 +1,6 @@
 getChatList()
 let currentChat = null;
+let currentChatId = null;
 
 function createChatId(uid1, uid2) {
     return uid1 > uid2 ? `${uid1}<=>${uid2}` : `${uid1}<=>${uid2}`;
@@ -44,20 +45,55 @@ function createTutorCard(name, id, chatId) {
         </div>
     `)
     $(`#${id}-chat-card`).click(() => {
-        window.history.replaceState(null, null, `?${chatId}`);
         readChat(chatId)
     })
 }
 
 function readChat(chatId) {
     if (currentChat) currentChat();
-    currentChat = db.collection("chats").doc(chatId).onSnapshot(doc => {
-        const messages = doc.data().messages;
-        console.log(messages, firebase.firestore.FieldValue.serverTimestamp())
+    currentChatId = chatId;
+    currentChat = db.collection("chats").doc(chatId).collection("messages").orderBy("timestamp", "desc").onSnapshot(snapshot => {
+        $('#bubble-container').html('')
+        snapshot.docs.map(doc => {
+            const data = doc.data();
+            if (data.author === `${auth.currentUser.uid}`.trim()) {
+                createYourBubble(data.content)
+            }
+        })
     })
 }
 
+function createYourBubble(message) {
+    const anchor = $('#bubble-container');
+    anchor.append(`
+        <div class="your-bubble">
+            <p>${message}</p>
+        </div>
+    `)
+}
+
+function createTheirBubble(message) {
+    const anchor = $('#bubble-container');
+    anchor.append(`
+        <div class="their-bubble">
+            ${message}
+        </div>
+    `)
+}
+
 function sendMessage(e) {
-    e.preventDefault()
-    
+    e.preventDefault();
+    const message = $('#chat-text').val();
+    $('#chat-text').val('');
+    if (message.length === 0 || !currentChatId) return;
+    console.log(message)
+    try {
+        db.collection("chats").doc(currentChatId).collection("messages").add({
+            content: message,
+            author: auth.currentUser.uid,
+            timestamp: firebase.firestore.Timestamp.now()
+        })
+    } catch (error) {
+        // lmao
+    }
 }
