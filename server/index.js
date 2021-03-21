@@ -51,7 +51,7 @@ httpsServer.listen(port, () => {
 
 app.get('/', async (req, res) => {
 	let command = req.query.cmd;
-	let action = await utils.getProcess('python3', ['./chat-model/parse.py', command]);
+	let action = await utils.getProcess('python3', ['-u', './chat-model/parse.py', command]);
 	console.log(action);
 
 	responses = model_responses[action['tag']];
