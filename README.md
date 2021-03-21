@@ -9,6 +9,9 @@ The front-end of our website is built using HTML, CSS, and JavaScript / jQuery. 
 College is hard. Advanced classes in difficult subjects are very challenging and often we find ourselves needing to ask help. Getting quick and easy help is often a struggle as there is usually a large line or you have to make appointments way in advance. Especially now with the COVID-19 pandemic, it has become increasing harder to find quick and easy help. We wanted to make something that could not only solve this issue, but create a lasting community for people to belong to.
 ## Accomplishments that we're proud of
 We are proud that we were able to successfully bring our idea to life during the span of the hackathon. We are also proud of all that we learned and the new experiences we gained. We got a chance to experiment with all kinds of new technology like the Google Tesseract OCR engine so we are proud that we were able to learn how to use them.
+
+Training our own text subject classifier model was also extremely challenging, but also rewarding. We utilized the Pytorch python library, given a dataset of words and labels(subject). We trained our classifier was significantly overtraining on the data since our dataset was so small. Thus, we increased our regularization constant and slightly decreased our step size, such that the small batch sizes wouldnt overfit. As a result, we are able to classify the subject of the user's question.
+
 ## What we learned
 We learned a lot more about web development and building fast and scalable applications with Google Cloud and Docker/Kubernetes as well as fast and scalable databases with Google Firebase. We learned how to integrate ML models into a Node.JS backend server as well as how to use the Google Tesseract OCR engine. We also learned how to use the WolframAlpha API for the first time.
 ## What's next for Alpha Stack
