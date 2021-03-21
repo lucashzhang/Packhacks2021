@@ -21,7 +21,7 @@ loginForm.addEventListener('submit', (e) => {
 var userSignedIn = false;
 
 function login(email, password, state) {
-	firebase.auth().setPersistence(state).then(function() {
+	firebase.auth().setPersistence(state).then(function () {
 		auth.signInWithEmailAndPassword(email, password).then((cred) => {
 			userSignedIn = true;
 		}).catch(err => {
@@ -44,8 +44,8 @@ auth.onAuthStateChanged((user) => {
 				document.location.replace('postlist.html');
 			}
 		}
-    }
- });
+	}
+});
 
 function sendEmail() {
 	auth.currentUser.sendEmailVerification().then(() => {
