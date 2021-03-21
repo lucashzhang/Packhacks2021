@@ -35,6 +35,14 @@ html,body {
 	background: var(--primary-red);
 }
 
+.app-title {
+	color: white;
+	position: relative;
+	left: 150px;
+	top: 13px;
+	font-size: 38px;
+}
+
 .vertical-center {
 	position: absolute;
 	top: 50%;
