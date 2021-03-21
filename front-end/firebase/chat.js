@@ -113,7 +113,7 @@ function useModel(message) {
     }
 
     $.ajax({
-        url: "https://api.aszala.com:3000/?cmd=" + message,
+        url: "https://api.aszala.com:3000/?cmd=" + encodeURIComponent(message),
         type: 'get',
         dataType: 'json',
         success: function (res) {
