@@ -116,7 +116,11 @@ function displayPost() {
         // CODE HERE TO DISPLAY USER, POST, AND LIKES
 
         let comment_div = $("#comment-container")
-		comment_div.html("");
+
+		if ((this_thread.length -3) / 2 > 1 ) {
+			comment_div.html("");
+		}
+		
         for (let i = 3; i < this_thread.length; i += 2) {
             // CODE HERE TO APPEND COMMENTS TO THE PAGE
             let comment_user = this_thread[i];
