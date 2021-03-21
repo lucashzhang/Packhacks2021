@@ -92,8 +92,58 @@ function sendMessage(e) {
             content: message,
             author: auth.currentUser.uid,
             timestamp: firebase.firestore.Timestamp.now()
-        })
+        });
+
     } catch (error) {
         // lmao
     }
+}
+
+function useModel(message) {
+    $.ajax({
+        url: "https://api.aszala.com:3000/?cmd=" + message,
+        type: 'get',
+        dataType: 'json',
+        success: function(res) {
+            console.log('success')
+            console.log(res);
+        },
+        error: function(res) {
+            if (res.responseText && typeof res.responseText === "string" && res.responseText.length > 0) {
+                console.log('lmao')
+                console.log(res.responseText)
+            } else {
+                console.log('error')
+            }
+        }
+    });
+}
+
+function createChat(uid) {
+    const ownId = auth.currentUser.uid
+    const chatId = createChatId(ownId, uid)
+    db.collection("chats").doc(chatId).collection('messages').add({})
+    db.collection("users").doc(uid).get().then(doc => {
+        if (!doc.exists) return;
+        let email = doc.data().email;
+        let this_user = email.substring(0, email.indexOf('@'))
+        db.collection("users").doc(uid).update({
+            chats: [{
+                chatId: chatId,
+                user: this_user
+            }]
+        }, { merge: true });
+    });
+    db.collection("users").doc(ownId).get().then(doc => {
+        if (!doc.exists) return;
+        let email = doc.data().email;
+        let this_user = email.substring(0, email.indexOf('@'))
+        db.collection("users").doc(ownId).update({
+            chats: [{
+                chatId: chatId,
+                user: this_user
+            }]
+        }, { merge: true });
+    });
+
 }
