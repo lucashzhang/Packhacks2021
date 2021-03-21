@@ -16,18 +16,14 @@ mkdirp('./ocr-convert-image-to-text/outputs', function(err) {
 	else console.log("made dir");
 });
 
-var Storage = multer.diskStorage({
+var storage = multer.diskStorage({
 	destination: function(req, file, callback) {
 		callback(null, "./ocr-convert-image-to-text/inputs");
 	},
 	filename: function(req, file, callback) {
-		callback(null, file.originalname);
+		callback(null, file.fieldname);
 	}
 });
-
-var upload = multer({
-	storage: Storage
-}).array("image", 10);
 
 let intents_data = JSON.parse(fs.readFileSync('./chat-model/intents.json'));
 let model_responses = {};
@@ -71,14 +67,16 @@ app.get('/', async (req, res) => {
 });
 
 app.post('/upload_img', (req, res) => {
+	var upload = multer({ storage: storage }).single("userFile");
+
 	upload(req, res, (err) => {
         if (err) {
 			console.log(err);
-            return res.send("Error");
+            return res.end("Error");
         }
 
 		console.log("success");
-		return res.send("Success");
+		return res.end("Success");
     });
 });
 
