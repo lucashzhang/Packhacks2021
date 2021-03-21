@@ -9,7 +9,7 @@ $("#upload-image-form").submit(function(e) {
 		contentType: false,
 		success: function(res) {
 			$.ajax({
-				url: "https://api.aszala.com:3000/parse_img?name=" + res,
+				url: "https://api.aszala.com:3000/parse_img?filename=" + res,
 				type: 'get',
 				dataType: 'json',
 				success: function(res) {
