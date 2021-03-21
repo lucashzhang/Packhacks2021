@@ -69,7 +69,7 @@ app.get('/', async (req, res) => {
 	res.send(`${finalResponse}`);
 });
 
-app.post('/upload_img', upload.single('file') (req, res) => {
+app.post('/upload_img', upload.single('file'), (req, res) => {
 	console.log(req);
 
 	if (req.file) {
