@@ -15,4 +15,4 @@ We learned a lot more about web development and building fast and scalable appli
 In the future we want to implement a more categorical base to the forums. Students should be able to focus their questions into certain categories so they can get assistance from someone who knows that subject matter faster. We would also like to improve our 'Spud' bot to be even more useful than it already is. Including searching through past students questions so even if the bot does not know the answer it can give you the same assistance that a previous student had when they encountered the issue.
 
 ## Citations
-DennyAzevedo - https://github.com/DennyAzevedo/ocr-convert-image-to-text
+Prabhakar Gupta - https://github.com/prabhakar267/image2text
