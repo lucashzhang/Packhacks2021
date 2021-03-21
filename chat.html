@@ -18,21 +18,24 @@
     <div class="header">
         <div class="header-container">
 			<a href="index.html" class="icon vertical-center"><img class="logo" src="logo.png" alt="A/S Logo"></a>
-            <a href="login.html" class="button vertical-center">Login</a>
+            <a href="postlist.html" class="button vertical-center">Posts</a>
         </div>
     </div>
     <div class="chat-container">
         <div id="chat-list"></div>
         <div class="chat-main" id="bubble-container">
+			<div class="select-chat">
+				Select a chat to begin
+			</div>
         </div>
         <div class="chat-input">
             <form onsubmit="sendMessage(event)">
-                <input class="textfield" id="chat-text" placeholder="Your Input" />
+                <input class="textfield" id="chat-text" placeholder="Message..." />
                 <input id="chat-submit" type="submit" value="Send"></input>
 			</form>
 			<form id="upload-image-form">
                 <label class="upload" value="Upload Photo">Select A Photo<input id="image-upload" type="file" name="file"></input></label>
-                <input id="chat-submit" type="submit" value="Upload"></input>
+                <input id="chat-submit" type="submit" value="Upload Photo"></input>
             </form>
         </div>
     </div>

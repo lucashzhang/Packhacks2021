@@ -45,6 +45,7 @@ function createTutorCard(name, id, chatId) {
         </div>
     `)
     $(`#${id}-chat-card`).click(() => {
+		$(".chat-input").css("display", "block");
         readChat(chatId)
     })
 }
@@ -61,6 +62,8 @@ function readChat(chatId) {
             } else {
                 createTheirBubble(data.content)
             }
+
+			$('#bubble-container').scrollTop($('#bubble-container')[0].scrollHeight);
         })
     })
 }
