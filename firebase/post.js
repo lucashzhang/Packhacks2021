@@ -137,7 +137,7 @@ function profileClick() {
         let this_thread = doc.data().alldata;
         let this_post_user_ID = doc.data().user_id;
         // GO TO THE CHAT WITH this_user_ID (YOU) and this_post_user_ID (OTHER PARTY)
-        console.log("post User: " + this_post_user_ID + " logged in user: " + this_user)
+        console.log("post User: " + this_post_user_ID + "\n logged in user: " + this_user)
     })
       
 }
