@@ -22,7 +22,7 @@ for (let i=0;i<intents_data.intents.length;i++) {
 }
 
 const upload = multer({ dest: __dirname + "/ocr-convert-image-to-text/inputs" });
-const WolframAlphaAPI('6APH22-4T64A44K97');
+const waApi = WolframAlphaAPI('6APH22-4T64A44K97');
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
@@ -49,22 +49,36 @@ app.get('/', async (req, res) => {
 
 	responses = model_responses[action];
 
+	let finalResponse = '';
+
 	try {
 		const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-		let finalResponse = randomResponse;
+		finalResponse = randomResponse;
 
-		if (randomResponse.includes("api")) {
+		if (randomResponse.includes("api") || randomResponse.includes("redirect")) {
 			api = randomResponse.split("$")[1];
-			console.log(api + command);
-			finalResponse = await utils.getRequest(api + command);
+			finalResponse = await summonTheWolf(command);
 		}
-
-		res.send(`${finalResponse}`);
 	} catch (e) {
-		console.log(e);
-		res.send("no u");
+		finalResponse = await summonTheWolf(command);
 	}
+
+	res.send(`${finalResponse}`);
 });
+
+async function summonTheWolf(command) {
+	return new Promise(resolve => {
+		waApi.getFull(command).then((queryresult) => {
+			const pods = queryresult.pods;
+			const output = pods.map((pod) => {
+				const sudpodContent = pod.subpods.map(subpod => `<img src="${subpod.img.src}" alt="${subpod.img.alt}">`).join('\n');
+				return `<h2>${pod.title}</h2>\n${subpodcontent}`;
+			}).join('\n');
+
+			resolve(output);
+		}).catch(console.error);
+	});
+}
 
 app.post('/upload_img', upload.single('file'), (req, res) => {
 	if (req.file) {
