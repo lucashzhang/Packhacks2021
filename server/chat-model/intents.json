@@ -30,7 +30,7 @@
 
 	  ],
 	  "responses": [
-      "redirect:chemistry"
+      "redirect$chemistry"
 
 	  ]
     },
@@ -48,7 +48,7 @@
 
 	  ],
 	  "responses": [
-      "redirect:biology"
+      "redirect$biology"
 	  ]
     },
     {
@@ -63,7 +63,7 @@
         "Relativity"
 	  ],
 	  "responses": [
-      "redirect:physics"
+      "redirect$physics"
 	  ]
     },
 
