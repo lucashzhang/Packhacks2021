@@ -36,7 +36,7 @@ function displayAllPosts() {
 									<div>
 										<div class="post-title">${post}</div>
 										<div class="post-author">Asked by ${user}</div>
-										<div class="likes">${likes}<span class="heart">&hearts;</span> ${comments}<span class="comment-icon"><i class='fas fa-comment' style='font-size:36px'></i></span></div>
+										<div class="likes">${likes}<span class="heart">&hearts;</span> ${comments} <span class="comment-icon"><i class='fas fa-comment' style='font-size:20px'></i></span></div>
 									</div>
 								</a><hr class='hrSep'>`);
             }
