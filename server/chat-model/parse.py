@@ -10,7 +10,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 with open('./chat-model/intents.json', 'r') as json_data:
     intents = json.load(json_data)
 
-FILE = "data.pth"
+FILE = "./chat-model/data.pth"
 data = torch.load(FILE)
 
 input_size = data["input_size"]
