@@ -1,17 +1,22 @@
 let url = window.location.href
 let urlIDX = url.indexOf("post_ID") + 8
 let post_ID = ""
-let this_user = "A_ZALA23"
+let this_user = null;
 for (let i = urlIDX; i < url.length; i++) {
     post_ID = post_ID + url[i]
 }
 
 auth.onAuthStateChanged((user) => {
-    const uid = auth.currentUser.uid;
-    console.log(user.uid)
+    const uid = user.uid;
+    console.log(uid)
+    db.collection("users").doc(uid).get().then(doc => {
+        if (!doc.exists) return;
+        let email = doc.data().email;
+        this_user = email.substring(0, email.indexOf('@'))
+    })
 });
-
 displayAllPosts()
+
 
 function displayAllPosts() {
     document.querySelectorAll('.postListContainer').forEach(e => e.remove());
@@ -39,7 +44,7 @@ function displayAllPosts() {
 function writeUserData() {
     let postcount = db.collection("posts").doc("postcount");
     postcount.get().then((doc) => {
-        if (doc.exists) {
+        if (doc.exists && this_user) {
             let currcount = doc.data();
             currcount = currcount.postcount;
             let nextcount = currcount + 1;
