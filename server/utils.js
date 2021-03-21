@@ -37,6 +37,7 @@ module.exports = {
 
 			out.stdout.on('data', (chunk) => {
 				data += chunk;
+				console.log(chunk);
 			});
 
 			out.stdout.on('end', () => {
