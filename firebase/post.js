@@ -11,7 +11,7 @@ let this_user = null;
 // let user = firebase.auth();
 // console.log(user)
 // if (user) {
-//     this_user = user.uid; 
+//     this_user = user.uid;
 // }
 // console.log(this_user)
 var this_user_ID;
@@ -99,21 +99,30 @@ function displayPost() {
         let user = this_thread[0];
         let post = this_thread[1];
         let likes = this_thread[2];
-        let post_div = document.createElement("div");
-        post_div.innerHTML = "<div class='userPostContainer'>" + "<div class='userPost'>  User: " + user + "</div>" + "<div class='userPost'>  Question: " + post + "</div>" + "<div class='likeDiv'><div class='userPost likes' onclick='likePost()'> [" + likes + " Likes]</div> </div><div class='userPost'><hr>Comments<hr><input id='addCommentTxt' placeholder='Comment' class='addCommentTxt' type='text'>  <button class='addCommentBtn' onclick='writeComment()'>Add Comment</button></div></div> "
-
-        document.body.appendChild(post_div)
+        let post_div = $("#post-container");
+        post_div.html(`<div class='userPostContainer'>
+							<div class='post-title'>${post}</div>
+							<div class='post-author'>Asked by ${user}</div>
+							<div class="likes" onclick='likePost()' style='cursor:pointer;'>${likes}<span class="heart">&hearts;</span></div>
+							<div class='userPost'>
+								<hr>
+								<h3>Answers</h3>
+								<br>
+								<input id='addCommentTxt' placeholder='Comment' class='textfield' type='text'>
+								<button class='button' onclick='writeComment()'>Add Comment</button>
+							</div>
+						</div>`);
         // CODE HERE TO DISPLAY USER, POST, AND LIKES
 
-        let comment_div = document.createElement("div")
+        let comment_div = $("#comment-container")
         for (let i = 3; i < this_thread.length; i += 2) {
             // CODE HERE TO APPEND COMMENTS TO THE PAGE
             let comment_user = this_thread[i];
-            let comment = this_thread[i + 1]
+            let comment = this_thread[i + 1];
 
-            comment_div.innerHTML = comment_div.innerHTML + "<div class='commentContainer'>" + "<div class='comment'>" + comment_user + " says: " + comment + "</div>" + "</div>"
-        }
-        document.body.appendChild(comment_div)
+            //comment_div.innerHTML = comment_div.innerHTML + "<div class='commentContainer'>" + "<div class='comment'>" + comment_user + " says: " + comment + "</div>" + "</div>"
+			comment_div.append(`<div class='commentContainer'><div class='comment'><span class="comment-author">${comment_user}</span> says: ${comment}</div></div>`);
+	    }
 
     })
 
