@@ -32,5 +32,5 @@ $("#upload-image-form").submit(function(e) {
 });
 
 function setText(string) {
-	document.getElemenetById("chat-text").value = string;
+	document.getElementById("chat-text").value = string;
 }
