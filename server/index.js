@@ -53,7 +53,8 @@ app.get('/', async (req, res) => {
 	let command = req.query.cmd;
 
 	let action = await utils.getProcess('python3', ['-u', './chat-model/parse.py', command]);
-	console.log(action);
+	action = String(action);
+	console.log(typeof action);
 	console.log(model_responses);
 	responses = model_responses[action];
 
