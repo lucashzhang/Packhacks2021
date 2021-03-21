@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const multer = require("multer");
 const mkdirp = require("mkdirp");
 const utils = require('./utils');
+const cors = require('cors');
 
 mkdirp('./ocr-convert-image-to-text/inputs', function(err) {
 	if (err) console.log("Cant make dir");
@@ -35,6 +36,7 @@ for (let i=0;i<intents_data.intents.length;i++) {
 const upload = multer({ dest: "./ocr-convert-image-to-text/inputs" });
 
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
