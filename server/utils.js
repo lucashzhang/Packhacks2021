@@ -40,7 +40,7 @@ module.exports = {
 			});
 
 			out.stdout.on('end', () => {
-				let a = '';
+			/*	let a = '';
 				try {
 					console.log("Pinaaple1: " + data);
 					a = JSON.parse(data);
@@ -48,8 +48,8 @@ module.exports = {
 				} catch(e) {
 					a = data;
 				}
-
-				resolve(a);
+*/
+				resolve(JSON.parse(data));
 			});
 		});
 	}
