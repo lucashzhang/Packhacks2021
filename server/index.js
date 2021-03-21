@@ -50,7 +50,7 @@ httpsServer.listen(port, () => {
 
 app.get('/', async (req, res) => {
 	let command = req.query.cmd;
-	let action = await utils.getProcess('python3', ['./chat-model/parse.py', command]);
+	let action = await utils.getProcess('python', ['./chat-model/parse.py', command]);
 
 	responses = model_responses[action];
 
@@ -83,7 +83,7 @@ app.post('/upload_img', upload.single('file'), (req, res) => {
 
 app.get('/parse_img', async (req, res) => {
 	//let convert = await utils.getProcess('sh', ['./ocr-convert-image-to-text/run_model.sh']);
-	let convert = await utils.getProcess('python3', ['./ocr-convert-image-to-text/test.py']);
+	let convert = await utils.getProcess('python', [__dirname + '/ocr-convert-image-to-text/test.py']);
 
 	console.log(convert);
 
