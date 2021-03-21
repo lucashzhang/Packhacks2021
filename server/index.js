@@ -88,6 +88,8 @@ app.get('/parse_img', async (req, res) => {
 
 	let options = {
 		mode: 'text',
+		pythonPath: '/home/aszala/hackathons/Packhacks2021/server/.models/bin/python',
+		pythonOptions: [ '-u' ],
 		args: [ '-i ./ocr-convert-image-to-text/inputs/', '-o ./ocr-convert-image-to-text/out/' ]
 	};
 
