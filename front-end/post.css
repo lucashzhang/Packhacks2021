@@ -1,5 +1,12 @@
 .userPost {
-    /* background-color: rgb(0,0,0,.25); */
+    border-radius: 20px;
+    background: rgba(100, 100, 100, 0.10);
+    border: solid 2px transparent;
+    color: black;
+    font-size: 15px;
+    margin: auto;
+    width: 50%;
+    padding: 1%;
     
 
 }
@@ -9,13 +16,14 @@
     padding: 10px;
 }
 
-.likebtn {
-    background-color: green;
-    padding: 3px;
-}
 
 .comment {
-    /* background-color: rgb(0,0,0,.25); */
+    border-radius: 50px;
+    background: rgba(100, 100, 100, 0.10);
+    border: solid 2px transparent;
+    color: black;
+    padding: 10px;
+    font-size: 15px;
     
 
 }
@@ -26,26 +34,64 @@
 }
 
 .addCommentTxt {
-    min-width: 60%;
+    border-radius:11px;
+	border:1px solid white;
+	display:inline-block;
+	cursor:pointer;
+	color:black;
+	font-family:Arial;
+	font-size:10px;
+    padding:16px 31px;
+    width: 70%;
+	text-decoration:none;
+
+    
 }
 
 .addCommentBtn {
+    border-radius:11px;
+	border:1px solid white;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:1% 1%;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+	background: var(--primary-red);
     min-width: 20%;
 }
 
 
 .postList {
+    
 
 }
 
 .postListContainer {
+    border-radius: 50px;
+    background: rgba(100, 100, 100, 0.10);
+    border: solid 2px transparent;
+    color: black;
+    padding: 10px;
+    font-size: 15px;
     margin: auto;
     width: 50%;
-    padding: 10px;
+    padding: 1%;
+    
+
 }
 
 .commentPost {
     margin: auto;
     width: 50%;
     padding: 10px;
+}
+
+.likes {
+ 
+}
+.likes:hover {
+    color: pink;
 }

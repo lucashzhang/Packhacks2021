@@ -93,7 +93,7 @@ function displayPost() {
         let post = this_thread[1];
         let likes = this_thread[2];
         let post_div = document.createElement("div");
-        post_div.innerHTML = "<div class='userPostContainer'>" + "<div class='userPost'>  User: " + user + "</div>" + "<div class='userPost'>  Question: " + post + "</div>" + "<div class='userPost'> Likes: " + likes + "<button class='likebtn' onclick='likePost()'></button>" + "</div><div class='userPost'><hr>Comments<hr><input id='addCommentTxt' placeholder='Comment' class='addCommentTxt' type='text'><button class='addCommentBtn' onclick='writeComment()'>Add Comment</button></div></div> "
+        post_div.innerHTML = "<div class='userPostContainer'>" + "<div class='userPost'>  User: " + user + "</div>" + "<div class='userPost'>  Question: " + post + "</div>" + "<div class='likeDiv'><div class='userPost likes' onclick='likePost()'> [" + likes + " Likes]</div> </div><div class='userPost'><hr>Comments<hr><input id='addCommentTxt' placeholder='Comment' class='addCommentTxt' type='text'>  <button class='addCommentBtn' onclick='writeComment()'>Add Comment</button></div></div> "
 
         document.body.appendChild(post_div)
         // CODE HERE TO DISPLAY USER, POST, AND LIKES
@@ -104,7 +104,7 @@ function displayPost() {
             let comment_user = this_thread[i];
             let comment = this_thread[i + 1]
 
-            comment_div.innerHTML = comment_div.innerHTML + "<div class='commentContainer'>" + "<div class='comment'>  User: " + comment_user + "</div>" + "<div class='comment'>  Comment: " + comment + "</div>" + "</div>"
+            comment_div.innerHTML = comment_div.innerHTML + "<div class='commentContainer'>" + "<div class='comment'>" + comment_user + " says: " + comment + "</div>" + "</div>"
         }
         document.body.appendChild(comment_div)
 
