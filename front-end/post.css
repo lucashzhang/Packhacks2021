@@ -1,0 +1,51 @@
+.userPost {
+    /* background-color: rgb(0,0,0,.25); */
+    
+
+}
+.userPostContainer {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.likebtn {
+    background-color: green;
+    padding: 3px;
+}
+
+.comment {
+    /* background-color: rgb(0,0,0,.25); */
+    
+
+}
+.commentContainer {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.addCommentTxt {
+    min-width: 60%;
+}
+
+.addCommentBtn {
+    min-width: 20%;
+}
+
+
+.postList {
+
+}
+
+.postListContainer {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.commentPost {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
