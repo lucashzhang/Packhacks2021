@@ -1,22 +1,22 @@
 .hover1 {
     font-family: sans-serif;
     transition-duration: .4s;
-    padding: 10px 50px; 
-    border-radius:5px; 
-    color: black; 
-    background-color: white; 
-    font-size: 20px; 
-    border: none; 
-    z-index: 10; 
+    padding: 10px 50px;
+    border-radius:5px;
+    color: black;
+    background-color: white;
+    font-size: 20px;
+    border: none;
+    z-index: 10;
     position: absolute;
     top: 55%;
-    left: 46%;
-    transform: translate(-50%, -50%); 
+    left: 44%;
+    transform: translate(-50%, -50%);
     min-width:150px;
     min-height:50px;
     text-decoration: none;
     text-align: center;
-    
+
 }
 .hover1:hover{
     background-color: black;
@@ -26,17 +26,17 @@
 .hover2 {
     font-family: sans-serif;
     transition-duration: .4s;
-    padding: 10px 50px; 
-    border-radius:5px; 
-    color: white; 
-    background-color: #f44336; 
+    padding: 10px 50px;
+    border-radius:5px;
+    color: white;
+    background-color: #f44336;
     font-size: 20px;
-    border: none; 
-    z-index: 10; 
+    border: none;
+    z-index: 10;
     position: absolute;
     top: 55%;
-    left: 54%;
-    transform: translate(-50%, -50%); 
+    left: 56%;
+    transform: translate(-50%, -50%);
     min-width:150px;
     min-height:50px;
     text-decoration: none;
@@ -45,4 +45,9 @@
 .hover2:hover{
     background-color: rgb(255, 179, 179); /* Green */
     color: black;
+}
+
+.row>* {
+	max-width: none !important;
+	width: auto !important;
 }
