@@ -69,6 +69,7 @@ app.get('/', async (req, res) => {
 
 		res.send(`${finalResponse}`);
 	} catch (e) {
+		console.log(e);
 		res.send("no u");
 	}
 });
