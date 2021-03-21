@@ -58,6 +58,8 @@ function readChat(chatId) {
             const data = doc.data();
             if (data.author === `${auth.currentUser.uid}`.trim()) {
                 createYourBubble(data.content)
+            } else {
+                createTheirBubble(data.content)
             }
         })
     })
@@ -76,7 +78,7 @@ function createTheirBubble(message) {
     const anchor = $('#bubble-container');
     anchor.append(`
         <div class="their-bubble">
-            ${message}
+            <p>${message}</p>
         </div>
     `)
 }
@@ -93,6 +95,7 @@ function sendMessage(e) {
             author: auth.currentUser.uid,
             timestamp: firebase.firestore.Timestamp.now()
         });
+        useModel(message)
 
     } catch (error) {
         // lmao
@@ -100,18 +103,29 @@ function sendMessage(e) {
 }
 
 function useModel(message) {
+
+    function postAsBot(response) {
+        db.collection("chats").doc(currentChatId).collection("messages").add({
+            content: response,
+            author: 'SpudTheB0t',
+            timestamp: firebase.firestore.Timestamp.now()
+        });
+    }
+
     $.ajax({
         url: "https://api.aszala.com:3000/?cmd=" + message,
         type: 'get',
         dataType: 'json',
-        success: function(res) {
+        success: function (res) {
             console.log('success')
             console.log(res);
+            postAsBot(res);
         },
-        error: function(res) {
+        error: function (res) {
             if (res.responseText && typeof res.responseText === "string" && res.responseText.length > 0) {
                 console.log('lmao')
                 console.log(res.responseText)
+                postAsBot(res.responseText);
             } else {
                 console.log('error')
             }

@@ -133,6 +133,7 @@ body {
 .their-bubble {
     margin: 4px;
     padding: 2px 16px 2px 16px;
+    margin-right: auto;
     max-width: min(90%, calc(50vw - 200px));
     display: flex;
     align-items: center;
