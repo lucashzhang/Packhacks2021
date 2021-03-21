@@ -58,6 +58,7 @@ app.get('/', async (req, res) => {
 		if (randomResponse.includes("api") || randomResponse.includes("redirect")) {
 			api = randomResponse.split("$")[1];
 			finalResponse = await summonTheWolf(command);
+			finalResponse = `<p>Subject: ${action}</p>` + finalResponse
 		}
 	} catch (e) {
 		finalResponse = await summonTheWolf(command);
