@@ -63,7 +63,7 @@ app.get('/', async (req, res) => {
 
 		if (randomResponse.includes("api")) {
 			api = randomResponse.split(":")[1];
-
+			console.log(api + command);
 			finalResponse = await utils.getRequest(api + command);
 		}
 
