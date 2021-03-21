@@ -13,7 +13,6 @@ When training our pytorch subject text classifier, we ran into the problem of ov
 Another challenge was connecting python to the node.js server, which allows us to run our two models (Our Text Classifier Deep Neural Network, and Prabhakar Gupta's Tesseract OCR image2text model) in python on the backend; thus, a lot of debugging had to be done here for a proper user to server and server to user connection.
 The worst problem would be CSS.
 
-
 ## Accomplishments that we're proud of
 We are proud that we were able to successfully bring our idea to life during the span of the hackathon. We are also proud of all that we learned and the new experiences we gained. We got a chance to experiment with all kinds of new technology like the Google Tesseract OCR engine so we are proud that we were able to learn how to use them.
 
