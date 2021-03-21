@@ -94,14 +94,12 @@ app.get('/parse_img', async (req, res) => {
 	PythonShell.run('./ocr-convert-image-to-text/main.py', options, function(err, results) {
 		if (err) throw err;
 		console.log('results: %j', results);
-	});
 
-	console.log(convert);
-
-	fs.readFile('./ocr-convert-image-to-text/out/' + req.query.filename + ".txt", 'utf8', function(err, data) {
-		if (err) throw err;
-		let lines = data.split("\n");
-		res.send(data.join(', '));
+		fs.readFile('./ocr-convert-image-to-text/out/' + req.query.filename + ".txt", 'utf8', function(err, data) {
+			if (err) throw err;
+			let lines = data.split("\n");
+			res.send(data.join(', '));
+		});
 	});
 
 	res.send("Yeet");
