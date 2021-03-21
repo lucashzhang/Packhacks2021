@@ -108,8 +108,8 @@ function displayPost() {
 								<hr>
 								<h3>Answers</h3>
 								<br>
-								<input id='addCommentTxt' placeholder='Comment' class='textfield' type='text'>
-								<button class='button' onclick='writeComment()'>Add Comment</button>
+								<input id='addCommentTxt' placeholder='Write your answer...' class='textfield' type='text'>
+								<button class='button' onclick='writeComment()'>Answer</button>
 							</div>
 						</div>`);
         // CODE HERE TO DISPLAY USER, POST, AND LIKES
