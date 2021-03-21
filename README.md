@@ -4,7 +4,7 @@ We designed a functional website to serve as a educational resource for college 
 To use the site, just visit [alphastacks.aszala.com](alphastacks.aszala,com). To run on your own server, simple run ``node index.js`` in the server folder. Be sure to edit the location of the SSL certification.
 
 ## Technologies Used
-The front-end of our website is built using HTML, CSS, and JavaScript / jQuery. Our backend was built in Node.JS and Python. Our Machine Learning model is built in Python and makes use of the WolframAlpha API. Our image-to-text system was built using Python and Google's Tesseract OCR engine. Our app is publicly deployed on the Google Cloud Platform using Docker and Kubernetes. We use Google Firebase for our user authentication service and database.
+The front-end of our website is built using HTML, CSS, and JavaScript / jQuery. Our backend was built in Node.JS and Python. Our Machine Learning model is built in Python and makes use of the WolframAlpha API. Our image-to-text system was built using Python and Google's Tesseract OCR engine. We also tried to publicly deploy our app on the Google Cloud Platform using Docker and Kubernetes. We use Google Firebase for our user authentication service and database.
 ## Inspiration
 College is hard. Advanced classes in difficult subjects are very challenging and often we find ourselves needing to ask help. Getting quick and easy help is often a struggle as there is usually a large line or you have to make appointments way in advance. Especially now with the COVID-19 pandemic, it has become increasing harder to find quick and easy help. We wanted to make something that could not only solve this issue, but create a lasting community for people to belong to.
 ## Accomplishments that we're proud of
