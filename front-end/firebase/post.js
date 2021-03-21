@@ -47,7 +47,7 @@ function writeUserData(this_user, this_post, post_ID) {
   }
 
 //   writeUserData("david_lu", "I am really dumb can u help me answer what 1+1 is?", -1)
-//   writeUserData("abhay_zala", "SHUT UP U STUPID NOOB", "david_lu3")
+//   writeUserData("lucaszhang69", "i love you", "david_lu3")
 
 function likePost(post_ID) {
     var post = db.collection("posts").doc(post_ID);
@@ -77,12 +77,12 @@ function displayPost(post_ID) {
 
         
         var comments = []
-        for (var i =  3; i < this_thread.length; i++) {
+        for (var i =  3; i < this_thread.length; i += 2) {
             // CODE HERE TO APPEND COMMENTS TO THE PAGE
-            
+            var comment_user = this_thread[i];
+            var comment = this_thread[i+1]
         }
     })
 
 }
-
-console.log(displayPost('david_lu3'))
+displayPost('david_lu3')

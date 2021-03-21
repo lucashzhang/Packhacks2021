@@ -29,7 +29,7 @@ module.exports = {
 			});
 		});
 	},
-	
+
 	getProcess: function(type, params) {
 		return new Promise(resolve => {
 			let out = process.spawn(type, params);
