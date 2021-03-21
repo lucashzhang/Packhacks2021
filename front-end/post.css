@@ -95,3 +95,9 @@
 .likes:hover {
     color: pink;
 }
+
+.newpost {
+    border-style: solid;
+    background-color: rgb(245, 245, 245);
+    /* border: black; */
+}
