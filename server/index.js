@@ -27,6 +27,7 @@ let model_responses = {};
 
 for (let i=0;i<intents_data.intents.length;i++) {
 	model_responses[intents_data.intents[i].tag] = intents_data.intents[i].responses;
+	console.log(intents_data.intents[i].responses);
 }
 
 const upload = multer({ dest: __dirname + "/ocr-convert-image-to-text/inputs" });
