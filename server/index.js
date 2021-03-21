@@ -70,12 +70,14 @@ app.get('/', async (req, res) => {
 	res.send(`${finalResponse}`);
 });
 
-app.post('/upload_img', async (req, res) => {
-	await upload(req, res, async (err) => {
+app.post('/upload_img', (req, res) => {
+	upload(req, res, (err) => {
         if (err) {
+			console.log(err);
             return res.send("Error");
         }
 
+		console.log("success");
 		return res.send("Success");
     });
 });
