@@ -46,7 +46,7 @@ module.exports = {
 				} catch(e) {
 					a = data;
 				}
-				
+
 				resolve(a);
 			});
 		});

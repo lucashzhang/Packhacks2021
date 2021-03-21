@@ -68,11 +68,13 @@ function writeComment() {
     post.get().then((doc2) => {
         if (!this_user) return;
         let post_arr = doc2.data().alldata;
+        let this_user_ID = doc2.data().user_id;
         post_arr[post_arr.length] = this_user;
         post_arr[post_arr.length] = document.getElementById('addCommentTxt').value;
         document.getElementById('addCommentTxt').value = "";
         post.set({
             alldata: post_arr,
+            user_id: this_user_ID,
         })
         displayPost()
     })
