@@ -33,7 +33,7 @@ for (let i=0;i<intents_data.intents.length;i++) {
 	model_responses[intents_data.intents[i].tag] = intents_data.intents[i].responses;
 }
 
-const upload = multer({ dest: "./ocr-convert-image-to-text/inputs" });
+const upload = multer({ dest: __dirname + "/ocr-convert-image-to-text/inputs" });
 
 const app = express();
 app.use(cors());
@@ -72,7 +72,6 @@ app.get('/', async (req, res) => {
 });
 
 app.post('/upload_img', upload.single('file'), (req, res) => {
-	console.log("da");
 	if (req.file) {
 		res.send("Succes");
 	} else {
