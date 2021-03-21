@@ -82,7 +82,7 @@
 
       ],
 	  "responses": [
-      "api$http://api.wolframalpha.com/v2/query?appid=6APH22-4T64A44K97&input=solve+"
+      "api$http://api.wolframalpha.com/v2/query?appid=6APH22-4T64A44K97&input="
 	  ]
     },
     {
