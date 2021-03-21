@@ -156,7 +156,9 @@ function createChat(uid) {
 
     const ownId = auth.currentUser.uid
     const chatId = createChatId(ownId, uid)
-    db.collection("chats").doc(chatId).collection('messages').add({})
+    db.collection("chats").doc(chatId).collection('messages').get().then(doc => {
+        if (doc.exists) db.collection("chats").doc(chatId).collection('messages').add({})
+    })
     db.collection("users").doc(uid).get().then(doc => {
         if (!doc.exists) return;
         let email = doc.data().email;
