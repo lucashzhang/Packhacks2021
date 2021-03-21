@@ -2,12 +2,14 @@ let url = window.location.href
 let urlIDX = url.indexOf("post_ID") + 8
 let post_ID = ""
 let this_user = null;
+let this_user_id = null;
 for (let i = urlIDX; i < url.length; i++) {
     post_ID = post_ID + url[i]
 }
 
 auth.onAuthStateChanged((user) => {
     const uid = user.uid;
+    this_user_id = uid;
     console.log(uid)
     db.collection("users").doc(uid).get().then(doc => {
         if (!doc.exists) return;
@@ -29,7 +31,7 @@ function displayAllPosts() {
                 let user = this_thread[0];
                 let post = this_thread[1];
                 let likes = this_thread[2];
-                post_div.innerHTML = post_div.innerHTML + "<div class='postListContainer'><a href=post.html?post_ID=" +  doc.id +  " id='postList'>"+ user +  " [" + likes + " likes] " + post  +"</a></div>"
+                post_div.innerHTML = post_div.innerHTML + "<div class='postListContainer'><a href=post.html?post_ID=" +  doc.id +  " id='postList'>" + " [" + likes + " likes] "  + user + ": "+ post  +"</a></div>"
                 console.log(doc.id, " => ", doc.data());
             }
             
@@ -51,7 +53,8 @@ function writeUserData() {
             postcount.set({postcount: nextcount})
             let post = db.collection("posts").doc(this_user + currcount);
             post.set({
-                alldata: [this_user, document.getElementById('addCommentTxt').value, 0]
+                alldata: [this_user, document.getElementById('addCommentTxt').value, 0],
+                user_id: this_user_id,
             })
             displayAllPosts()
         } 
