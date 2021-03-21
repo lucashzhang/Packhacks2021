@@ -6,6 +6,7 @@ const multer = require("multer");
 const mkdirp = require("mkdirp");
 const utils = require('./utils');
 const cors = require('cors');
+let {PythonShell} = require('python-shell');
 
 mkdirp('./ocr-convert-image-to-text/inputs', function(err) {
 	if (err) console.log("Cant make dir");
@@ -82,12 +83,23 @@ app.post('/upload_img', upload.single('file'), (req, res) => {
 
 
 app.get('/parse_img', async (req, res) => {
-	let convert = await utils.getProcess('sh', ['./ocr-convert-image-to-text/run_model.sh']);
+	//let convert = await utils.getProcess('sh', ['./ocr-convert-image-to-text/run_model.sh']);
+	//let convert = await utils.getProcess('python', ['-u', __dirname + '/ocr-convert-image-to-text/test.py']);
 
-	fs.readFile('./ocr-convert-image-to-text/out/' + req.query.filename + ".txt", 'utf8', function(err, data) {
+	let options = {
+		mode: 'text',
+		args: [ '-i ./ocr-convert-image-to-text/inputs/', '-o ./ocr-convert-image-to-text/out/' ]
+	};
+
+	PythonShell.run('./ocr-convert-image-to-text/main.py', options, function(err, results) {
 		if (err) throw err;
-		let lines = data.split("\n");
-		res.send(data.join(', '));
+		console.log('results: %j', results);
+
+		fs.readFile('./ocr-convert-image-to-text/out/' + req.query.filename + ".txt", 'utf8', function(err, data) {
+			if (err) throw err;
+			let lines = data.split("\n");
+			res.send(data.join(', '));
+		});
 	});
 
 	res.send("Yeet");
