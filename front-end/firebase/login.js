@@ -33,9 +33,16 @@ function login(email, password, state) {
 
 auth.onAuthStateChanged((user) => {
 	if (user) {
-		if (!user.emailVerified) {
-			$("#login-error").css("display", "block");
-			$("#login-error").html("Your email has not been verified. Please click <span onclick='sendEmail();' style='text-decoration:underline;cursor:pointer;'>here</span> if you would like another verification email.");
+		if (!userSignedIn) {
+			document.location.replace('postlist.html');
+			console.log("User signed in");
+		} else {
+			if(!user.emailVerified) {
+				$("#login-error").css("display", "block");
+				$("#login-error").html("Your email has not been verified. Please click <span onclick='sendEmail();' style='text-decoration:underline;cursor:pointer;'>here</span> if you would like another verification email.");
+			} else {
+				document.location.replace('postlist.html');
+			}
 		}
 	}
 });
