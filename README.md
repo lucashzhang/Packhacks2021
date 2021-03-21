@@ -13,3 +13,6 @@ We are proud that we were able to successfully bring our idea to life during the
 We learned a lot more about web development and building fast and scalable applications with Google Cloud and Docker/Kubernetes as well as fast and scalable databases with Google Firebase. We learned how to integrate ML models into a Node.JS backend server as well as how to use the Google Tesseract OCR engine. We also learned how to use the WolframAlpha API for the first time.
 ## What's next for Alpha Stack
 In the future we want to implement a more categorical base to the forums. Students should be able to focus their questions into certain categories so they can get assistance from someone who knows that subject matter faster. We would also like to improve our 'Spud' bot to be even more useful than it already is. Including searching through past students questions so even if the bot does not know the answer it can give you the same assistance that a previous student had when they encountered the issue.
+
+## Citations
+DennyAzevedo - https://github.com/DennyAzevedo/ocr-convert-image-to-text
