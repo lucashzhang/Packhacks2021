@@ -40,7 +40,14 @@ module.exports = {
 			});
 
 			out.stdout.on('end', () => {
-				resolve(JSON.parse(data));
+				let a = '';
+				try {
+					a = JSON.parse(data);
+				} catch(e) {
+					a = data;
+				}
+				
+				resolve(a);
 			});
 		});
 	}

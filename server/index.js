@@ -12,11 +12,6 @@ mkdirp('./ocr-convert-image-to-text/inputs', function(err) {
 	else console.log("made dir");
 });
 
-mkdirp('./ocr-convert-image-to-text/outputs', function(err) {
-	if (err) console.log("Cant make dir");
-	else console.log("made dir");
-});
-
 /*var storage = multer.diskStorage({
 	destination: function(req, file, callback) {
 		callback(null, "./ocr-convert-image-to-text/inputs");
@@ -73,6 +68,12 @@ app.get('/', async (req, res) => {
 
 app.post('/upload_img', upload.single('file'), (req, res) => {
 	if (req.file) {
+		fs.rename(__dirname + "/ocr-convert-image-to-text/inputs/" + req.file.filename, __dirname + "/ocr-convert-image-to-text/inputs/" + req.file.filename + ".png", function(err) {
+			if (err) {
+				console.log(err);
+			}
+		});
+
 		res.send(req.file.filename);
 	} else {
 		res.send("Error");
@@ -81,11 +82,13 @@ app.post('/upload_img', upload.single('file'), (req, res) => {
 
 
 app.get('/parse_img', async (req, res) => {
-	let convert = await utils.getProcess('python', ['./ocr-convert-image-to-text/main.py', '-i', './ocr-convert-image-to-text/inputs', '-o', './ocr-convert-image-to-text/outputs']);
+	let convert = await utils.getProcess('sh', ['./ocr-convert-image-to-text/run_model.sh']);
 
-	fs.readFile('./ocr-convert-image-to-text/outputs/' + req.query.filename, 'utf8', function(err, data) {
+	fs.readFile('./ocr-convert-image-to-text/out/' + req.query.filename + ".txt", 'utf8', function(err, data) {
 		if (err) throw err;
 		let lines = data.split("\n");
 		res.send(data.join(', '));
 	});
+
+	res.send("Yeet");
 });
