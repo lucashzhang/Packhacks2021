@@ -82,7 +82,8 @@ app.post('/upload_img', upload.single('file'), (req, res) => {
 
 
 app.get('/parse_img', async (req, res) => {
-	let convert = await utils.getProcess('sh', ['./ocr-convert-image-to-text/run_model.sh']);
+	//let convert = await utils.getProcess('sh', ['./ocr-convert-image-to-text/run_model.sh']);
+	let convert = await utils.getProcess('python', ['./ocr-convert-image-to-text/test.oy']);
 
 	console.log(convert);
 
