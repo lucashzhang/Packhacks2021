@@ -53,7 +53,7 @@ function createTutorCard(name, id, chatId) {
         level += name.charCodeAt(i) || 0;
     }
     saturation = 50 + saturation % 50;
-    level = 50 + level % 50;
+    level = 25 + level % 50;
 
     anchor.append(`
         <div class="chat-list-card" id="${id}-chat-card">
