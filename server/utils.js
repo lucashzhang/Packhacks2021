@@ -42,8 +42,9 @@ module.exports = {
 			out.stdout.on('end', () => {
 				let a = '';
 				try {
+					console.log("Pinaaple1: " + data);
 					a = JSON.parse(data);
-					console.log(a);
+					console.log("Pinaaple: " + a);
 				} catch(e) {
 					a = data;
 				}
