@@ -29,7 +29,7 @@ module.exports = {
 			});
 		});
 	},
-	
+
 	getProcess: function(type, params) {
 		return new Promise(resolve => {
 			let out = process.spawn(type, params);
@@ -40,7 +40,14 @@ module.exports = {
 			});
 
 			out.stdout.on('end', () => {
-				resolve(JSON.parse(data));
+				let a = '';
+				try {
+					a = JSON.parse(data);
+				} catch(e) {
+					a = data;
+				}
+				
+				resolve(a);
 			});
 		});
 	}

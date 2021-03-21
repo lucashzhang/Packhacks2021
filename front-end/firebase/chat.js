@@ -1,4 +1,9 @@
 getChatList()
+let currentChat = null;
+
+function createChatId(uid1, uid2) {
+    return uid1 > uid2 ? `${uid1}<=>${uid2}` : `${uid1}<=>${uid2}`;
+}
 
 function getChatList() {
     auth.onAuthStateChanged((user) => {
@@ -7,19 +12,19 @@ function getChatList() {
             const chats = doc.data().chats;
             const anchor = $("#tutor-list")
             anchor.html("");
-            createTutorCard('Spud The Bot', 'SpudTheB0t');
+            createTutorCard('Spud The Bot', 'SpudTheB0t', createChatId(uid, 'SpudTheB0t'));
             for (let chat of chats) {
                 const ids = chat.chatId.split("<=>");
                 const id = ids[0].trim() === `${uid}` ? `${ids[1]}` : `${ids[0]}`;
                 if (id !== 'SpudTheB0t') {
-                    createTutorCard(chat.user, id)
+                    createTutorCard(chat.user, id, chat.chatId)
                 }
             }
         })
     });
 }
 
-function createTutorCard(name, id) {
+function createTutorCard(name, id, chatId) {
     const anchor = $("#chat-list")
     let saturation = 0;
     let level = 0;
@@ -33,9 +38,26 @@ function createTutorCard(name, id) {
     level = 50 + level % 50;
 
     anchor.append(`
-        <div class="chat-list-card">
+        <div class="chat-list-card" id="${id}-chat-card">
         <div class="chat-list-profile" style="background-color: hsl(0, ${saturation}%, ${level}%)">${name.charAt(0).toUpperCase()}</div>
         ${name}
         </div>
     `)
+    $(`#${id}-chat-card`).click(() => {
+        window.history.replaceState(null, null, `?${chatId}`);
+        readChat(chatId)
+    })
+}
+
+function readChat(chatId) {
+    if (currentChat) currentChat();
+    currentChat = db.collection("chats").doc(chatId).onSnapshot(doc => {
+        const messages = doc.data().messages;
+        console.log(messages, firebase.firestore.FieldValue.serverTimestamp())
+    })
+}
+
+function sendMessage(e) {
+    e.preventDefault()
+    
 }

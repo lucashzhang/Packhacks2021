@@ -14,7 +14,7 @@ function drawCheck() {
 
 	var ctx = document.getElementById('check-canvas').getContext('2d');
 	ctx.lineWidth = width;
-	ctx.strokeStyle = 'rgba(0, 150, 0, 1)';
+	ctx.strokeStyle = 'rgba(150, 150, 150, 1)';
 
 	for (i = start; i < mid; i++) {
 	    var drawLeft = window.setTimeout(function () {
