@@ -8,7 +8,14 @@ $("#upload-image-form").submit(function(e) {
 		processData: false,
 		contentType: false,
 		success: function(res) {
-			console.log(res);
+			$.ajax({
+				url: "https://api.aszala.com:3000/parse_img?name=" + res,
+				type: 'get',
+				dataType: 'json',
+				success: function(res) {
+					console.log(res);
+				}
+			});
 		}
 	});
 });
