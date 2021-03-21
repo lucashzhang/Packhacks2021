@@ -57,16 +57,20 @@ app.get('/', async (req, res) => {
 
 	responses = model_responses[action];
 
-	const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-	let finalResponse = randomResponse;
+	try {
+		const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+		let finalResponse = randomResponse;
 
-	if (randomResponse.includes("api")) {
-		api = randomResponse.split(":")[1];
+		if (randomResponse.includes("api")) {
+			api = randomResponse.split(":")[1];
 
-		finalResponse = await utils.getRequest(api + command);
+			finalResponse = await utils.getRequest(api + command);
+		}
+
+		res.send(`${finalResponse}`);
+	} catch (e) {
+		res.send("no u");
 	}
-
-	res.send(`${finalResponse}`);
 });
 
 app.post('/upload_img', upload.single('file'), (req, res) => {
