@@ -27,7 +27,6 @@ let model_responses = {};
 
 for (let i=0;i<intents_data.intents.length;i++) {
 	model_responses[intents_data.intents[i].tag] = intents_data.intents[i].responses;
-	console.log(intents_data.intents[i].tag);
 }
 
 const upload = multer({ dest: __dirname + "/ocr-convert-image-to-text/inputs" });
@@ -52,21 +51,26 @@ httpsServer.listen(port, () => {
 
 app.get('/', async (req, res) => {
 	let command = req.query.cmd;
-	let action = await utils.getProcess('python3', ['./chat-model/parse.py', command]);
-	console.log(action);
 
-	responses = model_responses[action['tag']];
+	let action = await utils.getProcess('python3', ['-u', './chat-model/parse.py', command]);
+	action = String(action).trim();
 
-	const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-	let finalResponse = randomResponse;
+	responses = model_responses[action];
 
-	if (randomResponse.includes("api")) {
-		api = randomResponse.split(":")[1];
+	try {
+		const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+		let finalResponse = randomResponse;
 
-		finalResponse = await utils.getRequest(api + command);
+		if (randomResponse.includes("api")) {
+			api = randomResponse.split(":")[1];
+
+			finalResponse = await utils.getRequest(api + command);
+		}
+
+		res.send(`${finalResponse}`);
+	} catch (e) {
+		res.send("no u");
 	}
-
-	res.send(`${finalResponse}`);
 });
 
 app.post('/upload_img', upload.single('file'), (req, res) => {
