@@ -2,7 +2,7 @@ auth.onAuthStateChanged((user) => {
 	if (!user) {
 		document.location.replace("/login.html");
 	} else if (document.location === "signup.html" || document.location === "login.html") {
-		document.location.replace("/")
+		document.location.replace("/post.html")
 	}
 });
 

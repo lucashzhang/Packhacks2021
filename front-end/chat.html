@@ -27,8 +27,8 @@
         <div class="chat-main">
         </div>
         <div class="chat-input">
-            <form>
-                <input class="textfield" placeholder="Your Input" />
+            <form onsubmit="sendMessage(event)">
+                <input class="textfield" id="chat-text" placeholder="Your Input" />
                 <label class="upload" value="Upload Photo">Upload Photo<input type="file"></input></label>
                 <input id="chat-submit" type="submit" value="Send"></input>
             </form>

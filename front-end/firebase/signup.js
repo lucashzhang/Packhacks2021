@@ -45,8 +45,11 @@ function createUser(email, password) {
 						drawCheck();
 					});
 				});
-				db.collection("chats").doc(chatId).set({
-					messages: []
+				db.collection("chats").doc(chatId).collection('messages').set({
+					messages: [{
+						content: "Hello there, my name is Spud the Bot!",
+						timestamp: firebase.firestore.Timestamp.now()
+					}]
 				})
 			});
 
