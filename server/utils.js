@@ -21,7 +21,14 @@ module.exports = {
 				});
 
 				res.on('end', () => {
-					resolve(JSON.parse(data));
+					let a = '';
+					try {
+						a = JSON.parse(data);
+					} catch(e) {
+						a = data;
+					}
+
+					resolve(a);
 				});
 			}).on("error", (err) => {
 				console.log("Error: " + err.message);
