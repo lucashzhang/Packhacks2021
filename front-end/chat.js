@@ -1,35 +1,21 @@
-$("#image-upload").on("change", function(e) {
-	var file = $(this)[0].files[0];
-	var data = new FormData();
-
-	data.append('file', file);
+$("#upload-image-form").submit(function(e) {
+	e.preventDefault();
 
 	$.ajax({
-		url: "https://aszala.com:3000/upload_img",
+		url: "https://api.aszala.com:3000/upload_img",
 		type: 'post',
-		data: data,
-		contentType: false,
+		data: new FormData($("#upload-image-form")[0]),
 		processData: false,
-		success: function (response) {
-			console.log(response);
-		},
-		error: function (res) {
-			console.log(res);
+		contentType: false,
+		success: function(res) {
+			$.ajax({
+				url: "https://api.aszala.com:3000/parse_img?name=" + res,
+				type: 'get',
+				dataType: 'json',
+				success: function(res) {
+					console.log(res);
+				}
+			});
 		}
 	});
-/*
-	that = this;
-	formData = new FormData();
-	formData.append("filename", file.name);
-
-	$.ajax({ type: "POST", url: "https://aszala.com:3000/prase_img", xhr: function () {
-		var myXhr = $.ajaxSettings.xhr();
-
-		return myXhr;
-	}, success: function (data) {
-		console.log(data);
-	}, error: function (error) {
-
-	},
-	async: true, data: formData, cache: false, contentType: false, processData: false, timeout: 60000 });*/
 });

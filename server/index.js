@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const multer = require("multer");
 const mkdirp = require("mkdirp");
 const utils = require('./utils');
+const cors = require('cors');
 
 mkdirp('./ocr-convert-image-to-text/inputs', function(err) {
 	if (err) console.log("Cant make dir");
@@ -16,14 +17,14 @@ mkdirp('./ocr-convert-image-to-text/outputs', function(err) {
 	else console.log("made dir");
 });
 
-var storage = multer.diskStorage({
+/*var storage = multer.diskStorage({
 	destination: function(req, file, callback) {
 		callback(null, "./ocr-convert-image-to-text/inputs");
 	},
 	filename: function(req, file, callback) {
 		callback(null, file.fieldname);
 	}
-});
+});*/
 
 let intents_data = JSON.parse(fs.readFileSync('./chat-model/intents.json'));
 let model_responses = {};
@@ -32,9 +33,13 @@ for (let i=0;i<intents_data.intents.length;i++) {
 	model_responses[intents_data.intents[i].tag] = intents_data.intents[i].responses;
 }
 
+const upload = multer({ dest: __dirname + "/ocr-convert-image-to-text/inputs" });
+
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
 const port = 3000;
 
@@ -66,25 +71,19 @@ app.get('/', async (req, res) => {
 	res.send(`${finalResponse}`);
 });
 
-app.post('/upload_img', (req, res) => {
-	var upload = multer({ storage: storage }).single("file");
-	console.log(upload);
-	upload(req, res, (err) => {
-        if (err) {
-			console.log(err);
-            return res.end("Error");
-        }
-
-		console.log("success");
-		return res.end("Success");
-    });
+app.post('/upload_img', upload.single('file'), (req, res) => {
+	if (req.file) {
+		res.send(req.file.filename);
+	} else {
+		res.send("Error");
+	}
 });
 
 
-app.post('/parse_img', async (req, res) => {
+app.get('/parse_img', async (req, res) => {
 	let convert = await utils.getProcess('python', ['./ocr-convert-image-to-text/main.py', '-i', './ocr-convert-image-to-text/inputs', '-o', './ocr-convert-image-to-text/outputs']);
 
-	fs.readFile('./ocr-convert-image-to-text/outputs/' + req.body.filename, 'utf8', function(err, data) {
+	fs.readFile('./ocr-convert-image-to-text/outputs/' + req.query.filename, 'utf8', function(err, data) {
 		if (err) throw err;
 		let lines = data.split("\n");
 		res.send(data.join(', '));
