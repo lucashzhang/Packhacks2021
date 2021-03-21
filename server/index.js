@@ -27,6 +27,7 @@ let model_responses = {};
 
 for (let i=0;i<intents_data.intents.length;i++) {
 	model_responses[intents_data.intents[i].tag] = intents_data.intents[i].responses;
+	console.log(intents_data.intents[i].responses);
 }
 
 const upload = multer({ dest: __dirname + "/ocr-convert-image-to-text/inputs" });
@@ -53,7 +54,7 @@ app.get('/', async (req, res) => {
 	let command = req.query.cmd;
 	let action = await utils.getProcess('python3', ['./chat-model/parse.py', command]);
 
-	responses = model_responses[action];
+	responses = model_responses[action['tag']];
 
 	const randomResponse = responses[Math.floor(Math.random() * responses.length)];
 	let finalResponse = randomResponse;
