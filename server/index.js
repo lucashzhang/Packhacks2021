@@ -71,7 +71,7 @@ async function summonTheWolf(command) {
 		waApi.getFull(command).then((queryresult) => {
 			const pods = queryresult.pods;
 			const output = pods.map((pod) => {
-				const sudpodContent = pod.subpods.map(subpod => `<img src="${subpod.img.src}" alt="${subpod.img.alt}">`).join('\n');
+				const subpodContent = pod.subpods.map(subpod => `<img src="${subpod.img.src}" alt="${subpod.img.alt}">`).join('\n');
 				return `<h2>${pod.title}</h2>\n${subpodcontent}`;
 			}).join('\n');
 
