@@ -13,7 +13,16 @@ $("#upload-image-form").submit(function(e) {
 				type: 'get',
 				dataType: 'json',
 				success: function(res) {
+					console.log('success')
 					console.log(res);
+				},
+				error: function(res) {
+					if (typeof res.responseText === "string" && res.responseText.length > 0) {
+						console.log('lmao')
+						console.log(res.responseText)
+					} else {
+						console.log('error')
+					}
 				}
 			});
 		}
