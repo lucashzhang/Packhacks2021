@@ -137,9 +137,51 @@ function profileClick() {
         let this_thread = doc.data().alldata;
         let this_post_user_ID = doc.data().user_id;
         // GO TO THE CHAT WITH this_user_ID (YOU) and this_post_user_ID (OTHER PARTY)
-        console.log("post User: " + this_post_user_ID + "\n logged in user: " + this_user)
+        createChat(this_post_user_ID)
     })
       
+}
+
+function createChat(uid) {
+
+    function createChatId(uid1, uid2) {
+        return uid1 > uid2 ? `${uid1}<=>${uid2}` : `${uid1}<=>${uid2}`;
+    }
+
+    function filterChat(chat, chatArray) {
+        let doesExist = chatArray.filter(value => value.chatId === chat.chatId).length > 0
+        if (doesExist) return chatArray;
+        return [...chatArray, chat];
+    }
+
+    const ownId = auth.currentUser.uid
+    const chatId = createChatId(ownId, uid)
+    db.collection("chats").doc(chatId).collection('messages').add({})
+    db.collection("users").doc(uid).get().then(doc => {
+        if (!doc.exists) return;
+        let email = doc.data().email;
+        let that_user = email.substring(0, email.indexOf('@'));
+        let chats = filterChat({
+            chatId: chatId,
+            user: that_user
+        }, doc.data().chats);
+        db.collection("users").doc(ownId).update({
+            chats: chats
+        });
+    });
+    db.collection("users").doc(ownId).get().then(doc => {
+        if (!doc.exists) return;
+        let email = doc.data().email;
+        let that_user = email.substring(0, email.indexOf('@'));
+        let chats = filterChat({
+            chatId: chatId,
+            user: that_user
+        }, doc.data().chats);
+        db.collection("users").doc(uid).update({
+            chats: chats
+        });
+    });
+
 }
 
 displayPost(post_ID)

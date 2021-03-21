@@ -8,11 +8,12 @@ function createChatId(uid1, uid2) {
 
 function getChatList() {
     auth.onAuthStateChanged((user) => {
-        const uid = auth.currentUser.uid;
+        const uid = user.uid;
         db.collection("users").doc(uid).onSnapshot(doc => {
             const chats = doc.data().chats;
             const anchor = $("#tutor-list")
             anchor.html("");
+            console.log(chats)
             createTutorCard('Spud The Bot', 'SpudTheB0t', createChatId(uid, 'SpudTheB0t'));
             for (let chat of chats) {
                 const ids = chat.chatId.split("<=>");
@@ -98,7 +99,7 @@ function sendMessage(e) {
             author: auth.currentUser.uid,
             timestamp: firebase.firestore.Timestamp.now()
         });
-        useModel(message)
+        if (currentChatId.includes("SpudTheB0t")) useModel(message)
 
     } catch (error) {
         // lmao
@@ -120,13 +121,11 @@ function useModel(message) {
         type: 'get',
         dataType: 'json',
         success: function (res) {
-            console.log('success')
             console.log(res);
             postAsBot(res);
         },
         error: function (res) {
             if (res.responseText && typeof res.responseText === "string" && res.responseText.length > 0) {
-                console.log('lmao')
                 console.log(res.responseText)
                 postAsBot(res.responseText);
             } else {
@@ -134,33 +133,4 @@ function useModel(message) {
             }
         }
     });
-}
-
-function createChat(uid) {
-    const ownId = auth.currentUser.uid
-    const chatId = createChatId(ownId, uid)
-    db.collection("chats").doc(chatId).collection('messages').add({})
-    db.collection("users").doc(uid).get().then(doc => {
-        if (!doc.exists) return;
-        let email = doc.data().email;
-        let this_user = email.substring(0, email.indexOf('@'))
-        db.collection("users").doc(uid).update({
-            chats: [{
-                chatId: chatId,
-                user: this_user
-            }]
-        }, { merge: true });
-    });
-    db.collection("users").doc(ownId).get().then(doc => {
-        if (!doc.exists) return;
-        let email = doc.data().email;
-        let this_user = email.substring(0, email.indexOf('@'))
-        db.collection("users").doc(ownId).update({
-            chats: [{
-                chatId: chatId,
-                user: this_user
-            }]
-        }, { merge: true });
-    });
-
 }
