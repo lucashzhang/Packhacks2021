@@ -90,6 +90,4 @@ app.get('/parse_img', async (req, res) => {
 		let lines = data.split("\n");
 		res.send(lines.join(', '));
 	});
-
-	res.send("Yeet");
 });
