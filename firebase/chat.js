@@ -6,9 +6,12 @@ let currentChatId = null;
 let url = window.location.href
 let urlIDX = url.indexOf("chat_ID") + 8
 let chat_ID = "";
-for (let i = urlIDX; i < url.length; i++) {
-    chat_ID = chat_ID + url[i]
+if (urlIDX > -1 ) {
+    for (let i = urlIDX; i < url.length; i++) {
+        chat_ID = chat_ID + url[i]
+    }
 }
+
 let firebaseChatID = chat_ID.replace("%3C=%3E","<=>")
 
 
