@@ -91,7 +91,6 @@ function writeComment() {
 function displayPost() {
     let this_post = db.collection("posts").doc(post_ID);
     document.querySelectorAll('.userPostContainer').forEach(e => e.remove());
-    document.querySelectorAll('.commentContainer').forEach(e => e.remove());
 
     this_post.get().then((doc) => {
 
@@ -139,8 +138,8 @@ function profileClick() {
         console.log("post User: " + this_post_user_ID + "\n logged in user: " + this_user)
         window.location.href = "./chat.html?chat_ID=" + this_user_ID + "<=>" + this_post_user_ID
     })
-   
-      
+
+
 }
 
 displayPost(post_ID)
