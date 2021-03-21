@@ -40,6 +40,16 @@ module.exports = {
 				console.log(chunk);
 			});
 
+
+			out.stderr.on('data', (chunk) => {
+				data += chunk;
+				console.log("Error: " + chunk);
+			});
+
+			out.on('close', (code) => {
+				console.log("Code: " + code);
+			});
+
 			out.stdout.on('end', () => {
 			/*	let a = '';
 				try {
