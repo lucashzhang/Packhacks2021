@@ -33,7 +33,7 @@ let intents_data = JSON.parse(fs.readFileSync('./chat-model/intents.json'));
 let model_responses = {};
 
 for (let i=0;i<intents_data.intents.length;i++) {
-	self_tags[intents_data.intents[i].tag] = intents_data.intents[i].responses;
+	model_responses[intents_data.intents[i].tag] = intents_data.intents[i].responses;
 }
 
 const app = express();
