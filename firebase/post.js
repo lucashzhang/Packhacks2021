@@ -91,7 +91,6 @@ function writeComment() {
 function displayPost() {
     let this_post = db.collection("posts").doc(post_ID);
     document.querySelectorAll('.userPostContainer').forEach(e => e.remove());
-    document.querySelectorAll('.commentContainer').forEach(e => e.remove());
 
     this_post.get().then((doc) => {
 
@@ -99,13 +98,14 @@ function displayPost() {
         let user = this_thread[0];
         let post = this_thread[1];
         let likes = this_thread[2];
+		let comments = (this_thread.length -3) / 2;
         let post_div = $("#post-container");
         post_div.html(`<div class='userPostContainer'>
 							<a href='postlist.html' class="back-button">< Back</a>
 							<br><br>
 							<div class='post-title'>${post}</div>
 							<div class='post-author-click profile_Click' onclick='profileClick()'><span>Asked by ${user}</span></div>
-							<div class="likes" onclick='likePost()' style='cursor:pointer;'>${likes}<span class="heart">&hearts;</span></div>
+							<div class="likes" onclick='likePost()' style='cursor:pointer;'>${likes}<span class="heart">&hearts;</span> ${comments} <span class="comment-icon"><i class='fas fa-comment' style='font-size:20px'></i></span></div>
 							<div class='userPost'>
 								<hr>
 								<h3>Answers</h3>
@@ -117,7 +117,11 @@ function displayPost() {
         // CODE HERE TO DISPLAY USER, POST, AND LIKES
 
         let comment_div = $("#comment-container")
-		comment_div.html("");
+
+		if ((this_thread.length -3) / 2 > 1 ) {
+			comment_div.html("");
+		}
+
         for (let i = 3; i < this_thread.length; i += 2) {
             // CODE HERE TO APPEND COMMENTS TO THE PAGE
             let comment_user = this_thread[i];
@@ -134,12 +138,14 @@ function displayPost() {
 function profileClick() {
     let this_post = db.collection("posts").doc(post_ID);
     this_post.get().then((doc) => {
-        let this_thread = doc.data().alldata;
         let this_post_user_ID = doc.data().user_id;
         // GO TO THE CHAT WITH this_user_ID (YOU) and this_post_user_ID (OTHER PARTY)
         createChat(this_post_user_ID)
+        console.log("post User: " + this_post_user_ID + "\n logged in user: " + this_user)
+        window.location.href = "./chat.html?chat_ID=" + this_user_ID + "<=>" + this_post_user_ID
     })
-      
+
+
 }
 
 function createChat(uid) {
