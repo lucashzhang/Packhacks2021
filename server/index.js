@@ -16,14 +16,14 @@ mkdirp('./ocr-convert-image-to-text/outputs', function(err) {
 	else console.log("made dir");
 });
 
-var storage = multer.diskStorage({
+/*var storage = multer.diskStorage({
 	destination: function(req, file, callback) {
 		callback(null, "./ocr-convert-image-to-text/inputs");
 	},
 	filename: function(req, file, callback) {
 		callback(null, file.fieldname);
 	}
-});
+});*/
 
 let intents_data = JSON.parse(fs.readFileSync('./chat-model/intents.json'));
 let model_responses = {};
@@ -32,9 +32,12 @@ for (let i=0;i<intents_data.intents.length;i++) {
 	model_responses[intents_data.intents[i].tag] = intents_data.intents[i].responses;
 }
 
+const upload = multer({ dest: "./ocr-convert-image-to-text/inputs" });
+
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
 const port = 3000;
 
@@ -66,18 +69,14 @@ app.get('/', async (req, res) => {
 	res.send(`${finalResponse}`);
 });
 
-app.post('/upload_img', (req, res) => {
-	var upload = multer({ storage: storage }).single("file");
-	console.log(upload);
-	upload(req, res, (err) => {
-        if (err) {
-			console.log(err);
-            return res.end("Error");
-        }
+app.post('/upload_img', upload.single('file') (req, res) => {
+	console.log(req);
 
-		console.log("success");
-		return res.end("Success");
-    });
+	if (req.file) {
+		res.json(req.file);
+	}
+
+	return res.send("Errpr");
 });
 
 
