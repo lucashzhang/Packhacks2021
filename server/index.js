@@ -6,6 +6,7 @@ const multer = require("multer");
 const mkdirp = require("mkdirp");
 const utils = require('./utils');
 const cors = require('cors');
+import {PythonShell} from 'python-shell'
 
 mkdirp('./ocr-convert-image-to-text/inputs', function(err) {
 	if (err) console.log("Cant make dir");
@@ -83,7 +84,7 @@ app.post('/upload_img', upload.single('file'), (req, res) => {
 
 app.get('/parse_img', async (req, res) => {
 	//let convert = await utils.getProcess('sh', ['./ocr-convert-image-to-text/run_model.sh']);
-	let convert = await utils.getProcess('python', [__dirname + '/ocr-convert-image-to-text/test.py']);
+	let convert = await utils.getProcess('python', ['-u', __dirname + '/ocr-convert-image-to-text/test.py']);
 
 	console.log(convert);
 
