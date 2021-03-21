@@ -52,7 +52,7 @@ httpsServer.listen(port, () => {
 	console.log(`Server active at https://localhost:${port}`);
 });
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
 	let command = req.query.cmd;
 	let action = await utils.getProcess('python', ['./chat-model/parse.py', command]);
 
@@ -70,7 +70,7 @@ app.get('/', (req, res) => {
 	res.send(`${finalResponse}`);
 });
 
-app.post('/parse_img', (req, res) => {
+app.post('/parse_img', async (req, res) => {
 	upload(req, res, function(err) {
         if (err) {
             return res.end("Error");

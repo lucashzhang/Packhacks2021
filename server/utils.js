@@ -3,7 +3,7 @@ const https = require('https');
 const urlParser = require('url');
 
 module.exports = {
-	getRequest: async function(url) {
+	getRequest: function(url) {
 		console.log(`Sending http GET call to ${url}...`);
 		return new Promise(resolve => {
 			var opts = urlParser.parse(url);
@@ -30,7 +30,7 @@ module.exports = {
 		});
 	},
 
-	getProcess: async function(type, params) {
+	getProcess: function(type, params) {
 		return new Promise(resolve => {
 			let out = process.spawn(type, params);
 			let data = '';
