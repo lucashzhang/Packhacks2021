@@ -73,7 +73,13 @@ app.get('/', async (req, res) => {
 
 app.post('/upload_img', upload.single('file'), (req, res) => {
 	if (req.file) {
-		res.send(req.file.filename);
+		fs.rename(__dirname + "/ocr-convert-image-to-text/inputs/" + req.file.filename, __dirname + "/ocr-convert-image-to-text/inputs/" + req.file.filename + ".png", function(err) {
+			if (err) {
+				console.log(err);
+			}
+		});
+
+		res.send(req.file.filename + ".png");
 	} else {
 		res.send("Error");
 	}
