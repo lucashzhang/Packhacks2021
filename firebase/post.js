@@ -91,7 +91,6 @@ function writeComment() {
 function displayPost() {
     let this_post = db.collection("posts").doc(post_ID);
     document.querySelectorAll('.userPostContainer').forEach(e => e.remove());
-    document.querySelectorAll('.commentContainer').forEach(e => e.remove());
 
     this_post.get().then((doc) => {
 
@@ -99,13 +98,14 @@ function displayPost() {
         let user = this_thread[0];
         let post = this_thread[1];
         let likes = this_thread[2];
+		let comments = (this_thread.length -3) / 2;
         let post_div = $("#post-container");
         post_div.html(`<div class='userPostContainer'>
 							<a href='postlist.html' class="back-button">< Back</a>
 							<br><br>
 							<div class='post-title'>${post}</div>
 							<div class='post-author-click profile_Click' onclick='profileClick()'><span>Asked by ${user}</span></div>
-							<div class="likes" onclick='likePost()' style='cursor:pointer;'>${likes}<span class="heart">&hearts;</span></div>
+							<div class="likes" onclick='likePost()' style='cursor:pointer;'>${likes}<span class="heart">&hearts;</span> ${comments} <span class="comment-icon"><i class='fas fa-comment' style='font-size:20px'></i></span></div>
 							<div class='userPost'>
 								<hr>
 								<h3>Answers</h3>
@@ -117,7 +117,11 @@ function displayPost() {
         // CODE HERE TO DISPLAY USER, POST, AND LIKES
 
         let comment_div = $("#comment-container")
-		comment_div.html("");
+
+		if ((this_thread.length -3) / 2 > 1 ) {
+			comment_div.html("");
+		}
+
         for (let i = 3; i < this_thread.length; i += 2) {
             // CODE HERE TO APPEND COMMENTS TO THE PAGE
             let comment_user = this_thread[i];
@@ -136,11 +140,56 @@ function profileClick() {
     this_post.get().then((doc) => {
         let this_post_user_ID = doc.data().user_id;
         // GO TO THE CHAT WITH this_user_ID (YOU) and this_post_user_ID (OTHER PARTY)
+        createChat(this_post_user_ID)
         console.log("post User: " + this_post_user_ID + "\n logged in user: " + this_user)
         window.location.href = "./chat.html?chat_ID=" + this_user_ID + "<=>" + this_post_user_ID
     })
-   
-      
+
+
+}
+
+function createChat(uid) {
+
+    function createChatId(uid1, uid2) {
+        return uid1 > uid2 ? `${uid1}<=>${uid2}` : `${uid1}<=>${uid2}`;
+    }
+
+    function filterChat(chat, chatArray) {
+        let doesExist = chatArray.filter(value => value.chatId === chat.chatId).length > 0
+        if (doesExist) return chatArray;
+        return [...chatArray, chat];
+    }
+
+    const ownId = auth.currentUser.uid
+    const chatId = createChatId(ownId, uid)
+    db.collection("chats").doc(chatId).collection('messages').get().then(doc => {
+        if (doc.exists) db.collection("chats").doc(chatId).collection('messages').add({})
+    })
+    db.collection("users").doc(uid).get().then(doc => {
+        if (!doc.exists) return;
+        let email = doc.data().email;
+        let that_user = email.substring(0, email.indexOf('@'));
+        let chats = filterChat({
+            chatId: chatId,
+            user: that_user
+        }, doc.data().chats);
+        db.collection("users").doc(ownId).update({
+            chats: chats
+        });
+    });
+    db.collection("users").doc(ownId).get().then(doc => {
+        if (!doc.exists) return;
+        let email = doc.data().email;
+        let that_user = email.substring(0, email.indexOf('@'));
+        let chats = filterChat({
+            chatId: chatId,
+            user: that_user
+        }, doc.data().chats);
+        db.collection("users").doc(uid).update({
+            chats: chats
+        });
+    });
+
 }
 
 displayPost(post_ID)
