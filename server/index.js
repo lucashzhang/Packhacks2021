@@ -71,7 +71,7 @@ app.get('/', async (req, res) => {
 });
 
 app.post('/parse_img', async (req, res) => {
-	upload(req, res, function(err) {
+	upload(req, res, async function(err) {
         if (err) {
             return res.end("Error");
         }
