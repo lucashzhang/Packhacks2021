@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+
+    <title>Packhacks 2021</title>
+    <link href="global.css" rel="stylesheet">
+    <link href="chat.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-container">
+			<a href="index.html" class="icon vertical-center"><img class="logo" src="logo.png" alt="A/S Logo"></a>
+            <a href="login.html" class="button vertical-center">Login</a>
+        </div>
+    </div>
+    <div class="chat-container">
+        <div id="chat-list"></div>
+        <div class="chat-main" id="bubble-container">
+        </div>
+        <div class="chat-input">
+            <form onsubmit="sendMessage(event)">
+                <input class="textfield" id="chat-text" placeholder="Your Input" />
+                <input id="chat-submit" type="submit" value="Send"></input>
+			</form>
+			<form id="upload-image-form">
+                <label class="upload" value="Upload Photo">Select A Photo<input id="image-upload" type="file" name="file"></input></label>
+                <input id="chat-submit" type="submit" value="Upload"></input>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-storage.js"></script>
+    <script src="./firebase/config.js"></script>
+    <!-- <script src="../firebase/login.js"></script> -->
+    <script src="./firebase/validate_login.js"></script>
+    <script src="./firebase/chat.js"></script>
+    <script src="./chat.js"></script>
+</body>
+
+</html>
