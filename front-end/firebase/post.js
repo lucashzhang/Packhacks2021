@@ -86,7 +86,7 @@ function displayPost() {
         let post = this_thread[1];
         let likes = this_thread[2];
         let post_div = document.createElement("div");
-        post_div.innerHTML = "<div class='userPostContainer'>" + "<div class='userPost'>  User: " + user  + "</div>" + "<div class='userPost'>  Question: " + post  + "</div>" + "<div class='userPost'> Likes: " + likes + "<button class='likebtn' onclick='likePost()'></button>" +"</div><div class='userPost'><hr>Comments<hr><input id='commentName' placeholder='Name' style='width: 10%'> |  <input id='addCommentTxt' placeholder='Comment' class='addCommentTxt' type='text'><button class='addCommentBtn' onclick='writeComment()'>Add Comment</button></div></div> " 
+        post_div.innerHTML = "<div class='userPostContainer'>" + "<div class='userPost'>  User: " + user  + "</div>" + "<div class='userPost'>  Question: " + post  + "</div>" + "<div class='userPost'> Likes: " + likes + "<button class='likebtn' onclick='likePost()'></button>" +"</div><div class='userPost'><hr>Comments<hr><input id='addCommentTxt' placeholder='Comment' class='addCommentTxt' type='text'><button class='addCommentBtn' onclick='writeComment()'>Add Comment</button></div></div> " 
 
         document.body.appendChild(post_div)
         // CODE HERE TO DISPLAY USER, POST, AND LIKES
