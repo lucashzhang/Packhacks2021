@@ -14,9 +14,11 @@ let this_user = null;
 //     this_user = user.uid; 
 // }
 // console.log(this_user)
+var this_user_ID;
 
 auth.onAuthStateChanged((user) => {
     const uid = user.uid;
+    this_user_ID = uid;
     db.collection("users").doc(uid).get().then(doc => {
         if (!doc.exists) return;
         let email = doc.data().email;
@@ -37,7 +39,9 @@ function writeUserData() {
             postcount.set({ postcount: nextcount })
             let post = db.collection("posts").doc(this_user + currcount);
             post.set({
-                alldata: [this_user, this_post, 0]
+                alldata: [this_user, this_post, 0],
+                user_id: this_user_ID,
+
             })
             // even numbers (0 inclusive) are the user IDS of comments, the odd number following an even number is the actual post
         }
@@ -56,6 +60,7 @@ function likePost() {
         post_arr[2] = post_arr[2] + 1;
         post.set({
             alldata: post_arr,
+            user_id: this_user_ID,
         })
         displayPost()
     })
@@ -67,8 +72,10 @@ function writeComment() {
     let post = db.collection("posts").doc(post_ID);
     post.get().then((doc2) => {
         if (!this_user) return;
+        console.log(doc2.data())
         let post_arr = doc2.data().alldata;
         let this_user_ID = doc2.data().user_id;
+        console.log(this_user_ID)
         post_arr[post_arr.length] = this_user;
         post_arr[post_arr.length] = document.getElementById('addCommentTxt').value;
         document.getElementById('addCommentTxt').value = "";
