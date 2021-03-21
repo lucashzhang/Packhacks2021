@@ -69,7 +69,7 @@ function createYourBubble(message) {
     const anchor = $('#bubble-container');
     anchor.append(`
         <div class="your-bubble">
-            <p>${message}</p>
+            <div>${message}</div>
         </div>
     `)
 }
@@ -78,7 +78,7 @@ function createTheirBubble(message) {
     const anchor = $('#bubble-container');
     anchor.append(`
         <div class="their-bubble">
-            <p>${message}</p>
+            <div>${message}</div>
         </div>
     `)
 }

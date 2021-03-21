@@ -116,7 +116,7 @@ body {
 
 .your-bubble {
     margin: 4px;
-    padding: 2px 16px 2px 16px;
+    padding: 8px 16px 8px 16px;
     margin-left: auto;
     max-width: min(90%, calc(50vw - 200px));
     display: flex;
@@ -132,7 +132,7 @@ body {
 
 .their-bubble {
     margin: 4px;
-    padding: 2px 16px 2px 16px;
+    padding: 8px 16px 8px 16px;
     margin-right: auto;
     max-width: min(90%, calc(50vw - 200px));
     display: flex;
@@ -145,6 +145,6 @@ body {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
-.your-bubble p, .their-bubble p {
+.your-bubble div, .their-bubble div {
     word-break: break-all;
 }
