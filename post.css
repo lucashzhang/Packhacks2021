@@ -1,3 +1,5 @@
+
+
 .ask-container, .post-container {
 	width: 80%;
 	margin: auto;
@@ -28,7 +30,7 @@ a {
 }
 
 .hrSep {
-	
+
 }
 
 .postListContainer>div>div {
@@ -60,6 +62,15 @@ a {
 	margin-bottom: 10px;
 }
 
+.post-author:hover {
+	border-radius: 0.5rem;
+	padding: 10px;
+	font-style: oblique;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+	margin-bottom: 10px;
+}
+
 .likes {
 	font-size: 20px;
 }
@@ -86,6 +97,7 @@ a {
 	font-size: 20px;
 	font-weight: bold;
 }
+
 
 /*.userPost {
     border-radius: 20px;

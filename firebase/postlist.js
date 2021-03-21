@@ -36,7 +36,7 @@ function displayAllPosts() {
 				post_div.append(`<a class='postListContainer' href='post.html?post_ID=${doc.id}'>
 									<div>
 										<div class="post-title">${post}</div>
-										<div class="post-author">Asked by ${user}</div>
+										<div class="post-author" onclick='profileClick()'>Asked by ${user}</div>
 										<div class="likes">${likes}<span class="heart">&hearts;</span></div>
 									</div>
 								</a><hr class='hrSep'>`);
@@ -47,6 +47,15 @@ function displayAllPosts() {
 });
 }
 
+function profileClick() {
+    let this_post = db.collection("posts").doc(post_ID);
+    this_post.get().then((doc) => {
+        let this_thread = doc.data().alldata;
+        let this_post_user_ID = doc.data().user_id;
+        // GO TO THE CHAT WITH this_user_ID (YOU) and this_post_user_ID (OTHER PARTY)
+    })
+      
+}
 
 
 function writeUserData() {

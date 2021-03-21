@@ -104,7 +104,7 @@ function displayPost() {
 							<a href='postlist.html' class="back-button">< Back</a>
 							<br><br>
 							<div class='post-title'>${post}</div>
-							<div class='post-author'>Asked by ${user}</div>
+							<div class='post-author profile_Click' onclick='profileClick()'><span>Asked by ${user}</span></div>
 							<div class="likes" onclick='likePost()' style='cursor:pointer;'>${likes}<span class="heart">&hearts;</span></div>
 							<div class='userPost'>
 								<hr>
@@ -131,5 +131,15 @@ function displayPost() {
 
 }
 
+function profileClick() {
+    let this_post = db.collection("posts").doc(post_ID);
+    this_post.get().then((doc) => {
+        let this_thread = doc.data().alldata;
+        let this_post_user_ID = doc.data().user_id;
+        // GO TO THE CHAT WITH this_user_ID (YOU) and this_post_user_ID (OTHER PARTY)
+        console.log("post User: " + this_post_user_ID + " logged in user: " + this_user)
+    })
+      
+}
 
 displayPost(post_ID)
