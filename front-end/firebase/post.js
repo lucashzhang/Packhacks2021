@@ -17,7 +17,7 @@ let this_user = null;
 
 auth.onAuthStateChanged((user) => {
     const uid = auth.currentUser.uid;
-    console.log(user)
+    console.log(uid)
 });
 
 
