@@ -57,12 +57,13 @@ function writeUserData() {
             let nextcount = currcount + 1;
             postcount.set({postcount: nextcount})
             let post = db.collection("posts").doc(this_user + currcount);
-            console
+
             post.set({
                 user_id: this_user_id,
                 alldata: [this_user, document.getElementById('addCommentTxt').value, 0],
 
-            })
+            });
+			document.getElementById('addCommentTxt').value = "";
             displayAllPosts()
         }
 
