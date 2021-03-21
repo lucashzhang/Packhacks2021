@@ -6,21 +6,13 @@ const multer = require("multer");
 const mkdirp = require("mkdirp");
 const utils = require('./utils');
 const cors = require('cors');
-let {PythonShell} = require('python-shell');
+const WolframAlphaAPI = require('wolfram-alpha-api');
 
 mkdirp('./ocr-convert-image-to-text/inputs', function(err) {
 	if (err) console.log("Cant make dir");
 	else console.log("made dir");
 });
 
-/*var storage = multer.diskStorage({
-	destination: function(req, file, callback) {
-		callback(null, "./ocr-convert-image-to-text/inputs");
-	},
-	filename: function(req, file, callback) {
-		callback(null, file.fieldname);
-	}
-});*/
 
 let intents_data = JSON.parse(fs.readFileSync('./chat-model/intents.json'));
 let model_responses = {};
@@ -30,7 +22,7 @@ for (let i=0;i<intents_data.intents.length;i++) {
 }
 
 const upload = multer({ dest: __dirname + "/ocr-convert-image-to-text/inputs" });
-
+const WolframAlphaAPI('6APH22-4T64A44K97');
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
