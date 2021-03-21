@@ -2,6 +2,18 @@ getChatList()
 let currentChat = null;
 let currentChatId = null;
 
+
+let url = window.location.href
+let urlIDX = url.indexOf("chat_ID") + 8
+let chat_ID = "";
+for (let i = urlIDX; i < url.length; i++) {
+    chat_ID = chat_ID + url[i]
+}
+let firebaseChatID = chat_ID.replace("%3C=%3E","<=>")
+
+
+console.log(firebaseChatID)
+
 function createChatId(uid1, uid2) {
     return uid1 > uid2 ? `${uid1}<=>${uid2}` : `${uid1}<=>${uid2}`;
 }
@@ -20,6 +32,7 @@ function getChatList() {
                 if (id !== 'SpudTheB0t') {
                     createTutorCard(chat.user, id, chat.chatId)
                 }
+                console.log(ids)
             }
         })
     });
