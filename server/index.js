@@ -67,8 +67,8 @@ app.get('/', async (req, res) => {
 });
 
 app.post('/upload_img', (req, res) => {
-	var upload = multer({ storage: storage }).single("userFile");
-
+	var upload = multer({ storage: storage }).single("file");
+	console.log(upload);
 	upload(req, res, (err) => {
         if (err) {
 			console.log(err);
