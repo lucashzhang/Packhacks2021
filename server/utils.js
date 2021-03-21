@@ -37,30 +37,17 @@ module.exports = {
 
 			out.stdout.on('data', (chunk) => {
 				data += chunk;
-				console.log(chunk);
-			});
-
-
-			out.stderr.on('data', (chunk) => {
-				data += chunk;
-				console.log("Error: " + chunk);
-			});
-
-			out.on('close', (code) => {
-				console.log("Code: " + code);
 			});
 
 			out.stdout.on('end', () => {
-			/*	let a = '';
+				let a = '';
 				try {
-					console.log("Pinaaple1: " + data);
 					a = JSON.parse(data);
-					console.log("Pinaaple: " + a);
 				} catch(e) {
 					a = data;
 				}
-*/
-				resolve(JSON.parse(data));
+
+				resolve(a);
 			});
 		});
 	}
