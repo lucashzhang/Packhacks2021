@@ -76,7 +76,7 @@ app.post('/upload_img', upload.single('file'), (req, res) => {
 		res.json(req.file);
 	}
 
-	return res.send("Errpr");
+	res.send("Errpr");
 });
 
 
