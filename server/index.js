@@ -87,11 +87,13 @@ app.post('/upload_img', upload.single('file'), (req, res) => {
 
 
 app.get('/parse_img', async (req, res) => {
-	let convert = await utils.getProcess('python', ['./ocr-convert-image-to-text/main.py', '-i', './ocr-convert-image-to-text/inputs', '-o', './ocr-convert-image-to-text/outputs']);
+/*	let convert = await utils.getProcess('python', ['./ocr-convert-image-to-text/main.py', '-i', './ocr-convert-image-to-text/inputs', '-o', './ocr-convert-image-to-text/outputs']);
 
 	fs.readFile('./ocr-convert-image-to-text/outputs/' + req.query.filename, 'utf8', function(err, data) {
 		if (err) throw err;
 		let lines = data.split("\n");
 		res.send(data.join(', '));
-	});
+	});*/
+
+	res.send("Yeet");
 });
