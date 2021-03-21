@@ -142,7 +142,7 @@ function profileClick() {
         // GO TO THE CHAT WITH this_user_ID (YOU) and this_post_user_ID (OTHER PARTY)
         createChat(this_post_user_ID)
         console.log("post User: " + this_post_user_ID + "\n logged in user: " + this_user)
-        // window.location.href = "./chat.html?chat_ID=" + this_user_ID + "<=>" + this_post_user_ID
+        window.location.href = "./chat.html?chat_ID=" + this_user_ID + "<=>" + this_post_user_ID
     })
 
 
