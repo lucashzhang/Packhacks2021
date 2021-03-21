@@ -88,6 +88,7 @@ app.get('/parse_img', async (req, res) => {
 	fs.readFile('./ocr-convert-image-to-text/out/' + req.query.filename + ".txt", 'utf8', function(err, data) {
 		if (err) throw err;
 		let lines = data.split("\n");
+		console.log(data);
 		res.send(lines.join(', '));
 	});
 });
