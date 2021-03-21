@@ -4,9 +4,11 @@ $("#upload-image-form").submit(function(e) {
 	$.ajax({
 		url: "https://api.aszala.com:3000/upload_img",
 		type: 'post',
-		data: $("#upload-image-form").serialize(),
-		success: function() {
-			console.log("dawjjdwkljkl");
+		data: new FormData($("#upload-image-form")[0]),
+		processData: false,
+		contentType: false,
+		success: function(res) {
+			console.log(res);
 		}
 	});
 });
