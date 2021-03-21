@@ -57,12 +57,12 @@ a {
 	margin-bottom: 10px;
 }
 
-.post-author, .comment-author {
+.post-author, .post-author-click, .comment-author {
 	font-style: oblique;
 	margin-bottom: 10px;
 }
 
-.post-author:hover {
+.post-author-click:hover {
 	border-radius: 0.5rem;
 	padding: 10px;
 	font-style: oblique;

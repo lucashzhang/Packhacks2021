@@ -104,7 +104,7 @@ function displayPost() {
 							<a href='postlist.html' class="back-button">< Back</a>
 							<br><br>
 							<div class='post-title'>${post}</div>
-							<div class='post-author profile_Click' onclick='profileClick()'><span>Asked by ${user}</span></div>
+							<div class='post-author-click profile_Click' onclick='profileClick()'><span>Asked by ${user}</span></div>
 							<div class="likes" onclick='likePost()' style='cursor:pointer;'>${likes}<span class="heart">&hearts;</span></div>
 							<div class='userPost'>
 								<hr>
