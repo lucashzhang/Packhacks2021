@@ -22,6 +22,7 @@ displayAllPosts()
 
 function displayAllPosts() {
     document.querySelectorAll('.postListContainer').forEach(e => e.remove());
+    document.querySelectorAll('.hrSep').forEach(e => e.remove());
     let posts = db.collection('posts');
     posts.get().then((querySnapshot) => {
         let post_div = $("#post-container");
@@ -38,7 +39,7 @@ function displayAllPosts() {
 										<div class="post-author">Asked by ${user}</div>
 										<div class="likes">${likes}<span class="heart">&hearts;</span></div>
 									</div>
-								</a><hr>`);
+								</a><hr class='hrSep'>`);
             }
 
 
