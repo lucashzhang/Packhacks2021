@@ -75,19 +75,10 @@ function createYourBubble(message) {
 }
 
 function createTheirBubble(message) {
-    let content = ""
-    if (!message.indexOf("<?xml version='1.0' encoding='UTF-8'?>")) {
-        let xmlDoc = $.parseXML(message)
-        let $xml = $(xmlDoc);
-        console.log(message)
-        console.log(xmlDoc)
-    } else {
-        content = message
-    }
     const anchor = $('#bubble-container');
     anchor.append(`
         <div class="their-bubble">
-            <div>${content}</div>
+            <div>${message}</div>
         </div>
     `)
 }
