@@ -70,13 +70,11 @@ app.get('/', async (req, res) => {
 });
 
 app.post('/upload_img', upload.single('file'), (req, res) => {
-	console.log(req);
-
 	if (req.file) {
-		res.json(req.file);
+		res.send("Succes");
+	} else {
+		res.send("Error");
 	}
-
-	res.send("Errpr");
 });
 
 
