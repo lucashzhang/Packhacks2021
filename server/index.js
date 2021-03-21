@@ -73,7 +73,8 @@ app.get('/', async (req, res) => {
 
 app.post('/upload_img', upload.single('file'), (req, res) => {
 	if (req.file) {
-		res.send("Succes");
+		console.log(req.file.filename);
+		res.send("Success");
 	} else {
 		res.send("Error");
 	}
