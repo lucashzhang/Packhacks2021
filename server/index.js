@@ -74,7 +74,7 @@ app.post('/upload_img', upload.single('file'), (req, res) => {
 			}
 		});
 
-		res.send(req.file.filename + ".png");
+		res.send(req.file.filename);
 	} else {
 		res.send("Error");
 	}
