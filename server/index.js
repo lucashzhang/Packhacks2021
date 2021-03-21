@@ -84,7 +84,7 @@ app.post('/upload_img', async (req, res) => {
 app.post('/parse_img', async (req, res) => {
 	let convert = await utils.getProcess('python', ['./ocr-convert-image-to-text/main.py', '-i', './ocr-convert-image-to-text/inputs', '-o', './ocr-convert-image-to-text/outputs']);
 
-	fs.readFile(req.body.filename, 'utf8', function(err, data) {
+	fs.readFile('./ocr-convert-image-to-text/outputs/' + req.body.filename, 'utf8', function(err, data) {
 		if (err) throw err;
 		let lines = data.split("\n");
 		res.send(data.join(', '));
