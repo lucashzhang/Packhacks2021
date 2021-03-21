@@ -54,8 +54,6 @@ app.get('/', async (req, res) => {
 
 	let action = await utils.getProcess('python3', ['-u', './chat-model/parse.py', command]);
 	action = String(action).trim();
-	console.log(typeof action);
-	console.log(Object.keys(model_responses));
 
 	responses = model_responses[action];
 
