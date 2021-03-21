@@ -62,7 +62,7 @@ app.get('/', async (req, res) => {
 		let finalResponse = randomResponse;
 
 		if (randomResponse.includes("api")) {
-			api = randomResponse.split(":")[1];
+			api = randomResponse.split("$")[1];
 			console.log(api + command);
 			finalResponse = await utils.getRequest(api + command);
 		}
