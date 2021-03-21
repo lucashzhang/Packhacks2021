@@ -8,7 +8,9 @@ body {
     display: grid;
     grid-template-columns: 400px calc(100vw - 400px);
     grid-template-rows: calc(100vh - 175px) 100px;
+
 }
+
 
 #chat-list {
     grid-column: 1;
@@ -57,6 +59,7 @@ body {
     grid-row: 2;
     grid-column: 2;
     padding-top: 1rem;
+    white-space: nowrap;
 }
 
 .textfield {
@@ -87,7 +90,7 @@ body {
 
 #chat-submit {
     height: 54px;
-    width: 54px;
+    width: 10%;
     padding: 10px;
     font-size: 15px;
     border-radius: 54px;
@@ -148,3 +151,4 @@ body {
 .your-bubble div, .their-bubble div {
     word-break: break-all;
 }
+
