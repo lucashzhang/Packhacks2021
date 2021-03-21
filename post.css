@@ -62,6 +62,12 @@ a {
 	margin-bottom: 10px;
 }
 
+.post-author-click  {
+	font-style: oblique;
+	margin-bottom: 10px;
+	transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+}
+
 .post-author-click:hover {
 	border-radius: 0.5rem;
 	padding: 10px;
@@ -70,6 +76,8 @@ a {
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 	margin-bottom: 10px;
 }
+
+
 
 .likes {
 	font-size: 20px;
