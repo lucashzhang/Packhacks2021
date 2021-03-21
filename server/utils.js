@@ -43,10 +43,11 @@ module.exports = {
 				let a = '';
 				try {
 					a = JSON.parse(data);
+					console.log(a);
 				} catch(e) {
 					a = data;
 				}
-				
+
 				resolve(a);
 			});
 		});
