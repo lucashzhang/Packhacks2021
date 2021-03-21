@@ -1,7 +1,7 @@
 # PackHacks2021 - Alpha Stack
 We designed a functional website to serve as a educational resource for college students. The site acts as an online tutoring platform where students can come to get assistance on any educational topic. We implement Machine Learning and the WolframAlpha API to give students a bot that can answer simple questions. If the bot cannot answer the questions, students public ask their peers and online tutors for assistance.
 ## Getting started
-To use the site, just visit [alphastacks.aszala.com](alphastacks.aszala,com). To run on your own server, simple run ``node index.js`` in the server folder. Be sure to edit the location of the SSL certification.
+To use the site, just visit [https://lucaszhang.net/Packhacks2021/](https://lucaszhang.net/Packhacks2021/). To run on your own server, simple run ``node index.js`` in the server folder. Be sure to edit the location of the SSL certification.
 
 ## Technologies Used
 The front-end of our website is built using HTML, CSS, and JavaScript / jQuery. Our backend was built in Node.JS and Python. Our Machine Learning model is built in Python and makes use of the WolframAlpha API. Our image-to-text system was built using Python and Google's Tesseract OCR engine. We also tried to publicly deploy our app on the Google Cloud Platform using Docker and Kubernetes. We use Google Firebase for our user authentication service and database.
