@@ -6,7 +6,7 @@ const multer = require("multer");
 const mkdirp = require("mkdirp");
 const utils = require('./utils');
 const cors = require('cors');
-import {PythonShell} from 'python-shell'
+let PythonShell = require('python-shell');
 
 mkdirp('./ocr-convert-image-to-text/inputs', function(err) {
 	if (err) console.log("Cant make dir");
