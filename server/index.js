@@ -53,11 +53,8 @@ app.get('/', async (req, res) => {
 	let command = req.query.cmd;
 
 	let action = await utils.getProcess('python3', ['-u', './chat-model/parse.py', command]);
-	action = JSON.parse(JSON.stringify(action));
-	console.log(action);
-	console.log(action['tag']);
 
-	responses = model_responses[action['tag']];
+	responses = model_responses[action];
 
 	const randomResponse = responses[Math.floor(Math.random() * responses.length)];
 	let finalResponse = randomResponse;

@@ -47,4 +47,4 @@ if confidence > 0.75:
 	out["tag"] = tag
 	out["confidence"] = confidence
 
-print(out)
+print(out["tag"])
