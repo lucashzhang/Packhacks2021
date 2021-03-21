@@ -15,11 +15,13 @@ $("#upload-image-form").submit(function(e) {
 				success: function(res) {
 					console.log('success')
 					console.log(res);
+					setText(res);
 				},
 				error: function(res) {
 					if (typeof res.responseText === "string" && res.responseText.length > 0) {
 						console.log('lmao')
-						console.log(res.responseText)
+						console.log(res.responseText);
+						setText(res.responseText);
 					} else {
 						console.log('error')
 					}
@@ -28,3 +30,7 @@ $("#upload-image-form").submit(function(e) {
 		}
 	});
 });
+
+function setText(string) {
+	document.getElemenetById("chat-text").value = string;
+}
